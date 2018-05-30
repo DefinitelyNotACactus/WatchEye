@@ -12,5 +12,7 @@ package executable;
 public class Constants {
     
     public static String NAME = "Fakebook";
+    public static int DEFAULT_WIDTH = 1280;
+    public static int DEFAULT_HEIGHT = 1280;
     
 }

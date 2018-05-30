@@ -49,7 +49,7 @@ public class Server implements Serializable {
     
     private void serialize(){
         try {
-            try (FileOutputStream fileOut = new FileOutputStream("server.ser"); ObjectOutputStream out = new ObjectOutputStream(fileOut)) {
+            try (FileOutputStream fileOut = new FileOutputStream("data/server.ser", true); ObjectOutputStream out = new ObjectOutputStream(fileOut)) {
                 out.writeObject(instance);
             }
         } catch (IOException i) {
@@ -59,7 +59,7 @@ public class Server implements Serializable {
     private static Server deserialize(){
         try {
             Server server;
-            try (FileInputStream fileIn = new FileInputStream("server.ser"); ObjectInputStream in = new ObjectInputStream(fileIn)) {
+            try (FileInputStream fileIn = new FileInputStream("data/server.ser"); ObjectInputStream in = new ObjectInputStream(fileIn)) {
                 server = (Server) in.readObject();
             }
             return server;
@@ -78,7 +78,7 @@ public class Server implements Serializable {
                 try {
                     FileInputStream fileIn = new FileInputStream(mail + ".ser");
                     ObjectInputStream in = new ObjectInputStream(fileIn);
-                    setCurrentUser((User) in.readObject());
+                    login((User) in.readObject());
                     in.close();
                     fileIn.close();
                 } catch (IOException | ClassNotFoundException i) {
@@ -90,7 +90,16 @@ public class Server implements Serializable {
         }
     }
     
-    public void setCurrentUser(User user){
+    public void login(User user){
+        currentUser = user;
+        
+    }
+    
+    /**
+     * Use login instead
+     */
+    @Deprecated
+    private void setCurrentUser(User user){
         currentUser = user;
     }
     
@@ -100,5 +109,9 @@ public class Server implements Serializable {
     
     public void setClient(WatchEye client){
         this.client = client;
+    }
+    
+    public boolean emailInUse(String email){
+        return user.containsKey(email);
     }
 }

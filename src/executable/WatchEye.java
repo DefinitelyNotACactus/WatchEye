@@ -35,6 +35,15 @@ public class WatchEye extends JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        homeScreen = new javax.swing.JPanel();
+        jPanel1 = new javax.swing.JPanel();
+        jButton2 = new javax.swing.JButton();
+        jButton3 = new javax.swing.JButton();
+        jLabel2 = new javax.swing.JLabel();
+        jButton4 = new javax.swing.JButton();
+        jLabel3 = new javax.swing.JLabel();
+        jLabel1 = new javax.swing.JLabel();
+        jButton1 = new javax.swing.JButton();
         loginScreen = new javax.swing.JPanel();
         welcomeLogo = new javax.swing.JLabel();
         loginPanel = new javax.swing.JPanel();
@@ -73,6 +82,72 @@ public class WatchEye extends JFrame {
                 formWindowClosing(evt);
             }
         });
+
+        loginScreen.setVisible(false);
+        loginScreen.setEnabled(false);
+
+        jButton2.setText("Sair");
+
+        jButton3.setText("Grupos");
+
+        jLabel2.setText("gpIcon");
+
+        jButton4.setText("Amigos");
+
+        jLabel3.setText("bdIcon");
+
+        jLabel1.setText("photoIcon");
+
+        jButton1.setText("btPerfil");
+
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 240, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 479, Short.MAX_VALUE)
+                .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jButton2)
+                .addContainerGap())
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap())
+        );
+
+        javax.swing.GroupLayout homeScreenLayout = new javax.swing.GroupLayout(homeScreen);
+        homeScreen.setLayout(homeScreenLayout);
+        homeScreenLayout.setHorizontalGroup(
+            homeScreenLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        );
+        homeScreenLayout.setVerticalGroup(
+            homeScreenLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(homeScreenLayout.createSequentialGroup()
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 637, Short.MAX_VALUE))
+        );
 
         registerPanel.setVisible(false);
         registerPanel.setEnabled(false);
@@ -276,10 +351,14 @@ public class WatchEye extends JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(loginScreen, javax.swing.GroupLayout.PREFERRED_SIZE, 1280, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addComponent(homeScreen, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(loginScreen, javax.swing.GroupLayout.PREFERRED_SIZE, 720, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addComponent(homeScreen, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
         pack();
@@ -308,6 +387,9 @@ public class WatchEye extends JFrame {
         } else if(!Validator.validateEmail(regMailField.getText())){
             Toolkit.getDefaultToolkit().beep();
             JOptionPane.showMessageDialog(loginScreen, "O e-mail não é válido!", "Aviso", JOptionPane.WARNING_MESSAGE);
+        } else if(Server.getInstance().emailInUse(regMailField.getText())){
+            Toolkit.getDefaultToolkit().beep();
+            JOptionPane.showMessageDialog(loginScreen, "O e-mail já está em uso!", "Aviso", JOptionPane.WARNING_MESSAGE);
         } else if(regPasswordField.getPassword().length < 6){
             Toolkit.getDefaultToolkit().beep();
             JOptionPane.showMessageDialog(loginScreen, "A senha deve conter pelo menos 6 caracteres!", "Aviso", JOptionPane.WARNING_MESSAGE);
@@ -318,12 +400,13 @@ public class WatchEye extends JFrame {
              Toolkit.getDefaultToolkit().beep();
             JOptionPane.showMessageDialog(loginScreen, "A data de nascimento não é válida!", "Aviso", JOptionPane.WARNING_MESSAGE);  
         } else {
-            Server.getInstance().setCurrentUser(new User(regNameField.getText(), regMailField.getText(), new String(regPasswordField.getPassword()), regGenderBox.getSelectedIndex(), ddBox.getSelectedItem() +"-"+ mmBox.getSelectedItem() +"-" + yyyyBox.getSelectedItem()));
+            Server.getInstance().login(new User(regNameField.getText(), regMailField.getText(), new String(regPasswordField.getPassword()), regGenderBox.getSelectedIndex(), ddBox.getSelectedItem() +"-"+ mmBox.getSelectedItem() +"-" + yyyyBox.getSelectedItem()));
             Server.getInstance().addUser(Server.getInstance().getCurrentUser());
         }
     }//GEN-LAST:event_btRegisterActionPerformed
 
     private void formWindowClosing(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosing
+        Toolkit.getDefaultToolkit().beep();
         int confirm = JOptionPane.showConfirmDialog(loginScreen, "Você deseja mesmo Sair?", "Aviso", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
         if (confirm == 0) {
             Server.getInstance().shutdown();
@@ -364,12 +447,10 @@ public class WatchEye extends JFrame {
         //</editor-fold>
 
         /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                WatchEye client = new WatchEye();
-                Server.getInstance().setClient(client);
-                client.setVisible(true);
-            }
+        java.awt.EventQueue.invokeLater(() -> {
+            WatchEye client = new WatchEye();
+            Server.getInstance().setClient(client);
+            client.setVisible(true);
         });
     }
 
@@ -383,6 +464,15 @@ public class WatchEye extends JFrame {
     private javax.swing.JButton btRegister;
     private javax.swing.JButton btResetPassword;
     private javax.swing.JComboBox<String> ddBox;
+    private javax.swing.JPanel homeScreen;
+    private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton2;
+    private javax.swing.JButton jButton3;
+    private javax.swing.JButton jButton4;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JPanel jPanel1;
     private javax.swing.JLabel loginFootnote;
     private javax.swing.JLabel loginHeader;
     private javax.swing.JTextField loginMailField;

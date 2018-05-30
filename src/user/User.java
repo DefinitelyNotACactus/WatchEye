@@ -5,6 +5,7 @@
  */
 package user;
 
+import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
@@ -43,11 +44,12 @@ public class User implements Serializable {
     
     public void serialize(User user){
         try {
-            FileOutputStream fileOut = new FileOutputStream(email + ".ser");
+            FileOutputStream fileOut = new FileOutputStream("data/" + email + ".ser");
             ObjectOutputStream out = new ObjectOutputStream(fileOut);
             out.writeObject(user);
             out.close();
             fileOut.close();
+            out.close();
         } catch (IOException i) {
         }
     }
