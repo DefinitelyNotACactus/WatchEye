@@ -286,10 +286,12 @@ public class WatchEye extends JFrame {
 
     private void btLoginRegisterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btLoginRegisterActionPerformed
         loginPanel.setVisible(false);
+        loginPanel.setEnabled(false);
         if(!loginMailField.getText().trim().equals("")){
             regMailField.setText(loginMailField.getText());
         }
         registerPanel.setVisible(true);
+        registerPanel.setEnabled(true);
     }//GEN-LAST:event_btLoginRegisterActionPerformed
 
     private void btRegisterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btRegisterActionPerformed
