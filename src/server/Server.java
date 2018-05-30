@@ -23,17 +23,17 @@ import user.User;
  */
 public class Server implements Serializable {
     
-    private static Server instance = deserialize();
+    private static Server instance = new Server();
     
     //Login Field
-    private HashMap<String, String> user;
+    private HashMap<String, String> user = new HashMap<>();
     
     //Transient Fields
     private transient User currentUser = null;
     private transient WatchEye client;
     
     private Server(){
-        user = new HashMap<>();
+        deserialize();
     }
     
     public static Server getInstance(){
@@ -49,50 +49,54 @@ public class Server implements Serializable {
     
     private void serialize(){
         try {
-            try (FileOutputStream fileOut = new FileOutputStream("data/server.ser", true); ObjectOutputStream out = new ObjectOutputStream(fileOut)) {
+            try (FileOutputStream fileOut = new FileOutputStream("data/server.ser"); ObjectOutputStream out = new ObjectOutputStream(fileOut)) {
                 out.writeObject(instance);
             }
         } catch (IOException i) {
         }
     }
     
-    private static Server deserialize(){
+    private void deserialize(){
         try {
-            Server server;
             try (FileInputStream fileIn = new FileInputStream("data/server.ser"); ObjectInputStream in = new ObjectInputStream(fileIn)) {
-                server = (Server) in.readObject();
+                instance = (Server) in.readObject();
+                user = instance.user;
             }
-            return server;
         } catch (IOException | ClassNotFoundException i) {
         }
-        return new Server();
     }
     
     public void addUser(User newUser){
-        user.put(newUser.getMail(), newUser.getPassword());
+        user.put(newUser.getMail().toLowerCase(), newUser.getPassword());
     }
     
-    public void login(String mail, String password){
-        if(user.containsKey(mail)){
-            if(user.get(mail).equals(password)){
+    public void enter(String mail, String password){
+        if(user.containsKey(mail.toLowerCase())){
+            if(user.get(mail.toLowerCase()).equals(password)){
                 try {
-                    FileInputStream fileIn = new FileInputStream(mail + ".ser");
-                    ObjectInputStream in = new ObjectInputStream(fileIn);
-                    login((User) in.readObject());
-                    in.close();
-                    fileIn.close();
+                    try (FileInputStream fileIn = new FileInputStream("data/users/" + mail + ".ser"); ObjectInputStream in = new ObjectInputStream(fileIn)) {
+                        login((User) in.readObject());
+                    }
                 } catch (IOException | ClassNotFoundException i) {
                 }
+            } else {
+               Toolkit.getDefaultToolkit().beep();
+               JOptionPane.showMessageDialog(client.getLoginScreen(), "Senha incorreta.", "Erro", JOptionPane.ERROR_MESSAGE);   
             }
         } else {
                 Toolkit.getDefaultToolkit().beep();
-                JOptionPane.showMessageDialog(client.getLoginScreen(), "E-mail e/ou senha está(ão) errado(s)!", "Erro", JOptionPane.ERROR_MESSAGE);  
+                JOptionPane.showMessageDialog(client.getLoginScreen(), "E-mail não cadastrado.", "Erro", JOptionPane.ERROR_MESSAGE);  
         }
     }
     
     public void login(User user){
         currentUser = user;
-        
+        client.welcome(currentUser);
+    }
+    
+    public void logoff(){
+        currentUser.serialize(currentUser);
+        currentUser = null;
     }
     
     /**

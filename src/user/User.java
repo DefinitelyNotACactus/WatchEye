@@ -5,15 +5,11 @@
  */
 package user;
 
-import java.io.File;
-import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
-import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.io.Serializable;
 import java.util.ArrayList;
-import server.Server;
 
 /**
  *
@@ -34,7 +30,7 @@ public class User implements Serializable {
     
     public User(String name, String email, String password, int gender, String dob){
         this.name = name;
-        this.email = email;
+        this.email = email.toLowerCase();
         this.password = password;
         this.gender = gender;
         this.dob = dob;
@@ -44,7 +40,7 @@ public class User implements Serializable {
     
     public void serialize(User user){
         try {
-            FileOutputStream fileOut = new FileOutputStream("data/" + email + ".ser");
+            FileOutputStream fileOut = new FileOutputStream("data/users/" + email + ".ser");
             ObjectOutputStream out = new ObjectOutputStream(fileOut);
             out.writeObject(user);
             out.close();
@@ -59,7 +55,7 @@ public class User implements Serializable {
     }
 
     public void setName(String newName){
-        
+        name = newName;
     }
     
     public String getMail(){

@@ -5,7 +5,9 @@
  */
 package executable;
 
+import java.awt.Image;
 import java.awt.Toolkit;
+import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
@@ -36,14 +38,14 @@ public class WatchEye extends JFrame {
     private void initComponents() {
 
         homeScreen = new javax.swing.JPanel();
-        jPanel1 = new javax.swing.JPanel();
-        jButton2 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
+        headerPanel = new javax.swing.JPanel();
+        btLogoff = new javax.swing.JButton();
+        btGroups = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
-        jButton4 = new javax.swing.JButton();
+        btBuddies = new javax.swing.JButton();
         jLabel3 = new javax.swing.JLabel();
-        jLabel1 = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
+        profileIcon = new javax.swing.JLabel();
+        btProfile = new javax.swing.JButton();
         loginScreen = new javax.swing.JPanel();
         welcomeLogo = new javax.swing.JLabel();
         loginPanel = new javax.swing.JPanel();
@@ -51,7 +53,7 @@ public class WatchEye extends JFrame {
         loginMailField = new javax.swing.JTextField();
         loginPasslLabel = new javax.swing.JLabel();
         loginPasswordField = new javax.swing.JPasswordField();
-        btLogin = new javax.swing.JButton();
+        btEnter = new javax.swing.JButton();
         btResetPassword = new javax.swing.JButton();
         btLoginRegister = new javax.swing.JButton();
         loginHeader = new javax.swing.JLabel();
@@ -83,69 +85,77 @@ public class WatchEye extends JFrame {
             }
         });
 
-        loginScreen.setVisible(false);
-        loginScreen.setEnabled(false);
+        homeScreen.setVisible(false);
+        homeScreen.setEnabled(true);
+        homeScreen.setBackground(new java.awt.Color(153, 153, 153));
 
-        jButton2.setText("Sair");
+        headerPanel.setBackground(new java.awt.Color(0, 153, 51));
 
-        jButton3.setText("Grupos");
+        btLogoff.setText("Sair");
+        btLogoff.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btLogoffActionPerformed(evt);
+            }
+        });
+
+        btGroups.setText("Grupos");
 
         jLabel2.setText("gpIcon");
 
-        jButton4.setText("Amigos");
+        btBuddies.setText("Amigos");
 
         jLabel3.setText("bdIcon");
 
-        jLabel1.setText("photoIcon");
+        btProfile.setText("btPerfil");
 
-        jButton1.setText("btPerfil");
-
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+        javax.swing.GroupLayout headerPanelLayout = new javax.swing.GroupLayout(headerPanel);
+        headerPanel.setLayout(headerPanelLayout);
+        headerPanelLayout.setHorizontalGroup(
+            headerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, headerPanelLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(profileIcon, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 240, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(btProfile, javax.swing.GroupLayout.PREFERRED_SIZE, 240, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 479, Short.MAX_VALUE)
                 .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(btBuddies, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(btGroups, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jButton2)
+                .addComponent(btLogoff)
                 .addContainerGap())
         );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
+        headerPanelLayout.setVerticalGroup(
+            headerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(headerPanelLayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(headerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btGroups, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btBuddies, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(profileIcon, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btProfile, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btLogoff, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap())
         );
+
+        profileIcon.setIcon(new ImageIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/default_profile.png")).getImage().getScaledInstance(40, 40, Image.SCALE_SMOOTH)));
 
         javax.swing.GroupLayout homeScreenLayout = new javax.swing.GroupLayout(homeScreen);
         homeScreen.setLayout(homeScreenLayout);
         homeScreenLayout.setHorizontalGroup(
             homeScreenLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(headerPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         homeScreenLayout.setVerticalGroup(
             homeScreenLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(homeScreenLayout.createSequentialGroup()
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(headerPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 637, Short.MAX_VALUE))
         );
 
@@ -153,9 +163,13 @@ public class WatchEye extends JFrame {
         registerPanel.setEnabled(false);
         loginScreen.setLayout(null);
 
+        welcomeLogo.setBackground(new java.awt.Color(204, 204, 0));
         welcomeLogo.setText("logo");
+        welcomeLogo.setOpaque(true);
         loginScreen.add(welcomeLogo);
-        welcomeLogo.setBounds(0, 0, 1280, 200);
+        welcomeLogo.setBounds(0, 0, 1280, 220);
+
+        loginPanel.setBackground(new java.awt.Color(0, 153, 153));
 
         loginMailLabel.setText("E-mail");
 
@@ -165,10 +179,10 @@ public class WatchEye extends JFrame {
 
         loginPasswordField.setToolTipText("Sua senha cadastrada");
 
-        btLogin.setText("Entrar");
-        btLogin.addActionListener(new java.awt.event.ActionListener() {
+        btEnter.setText("Entrar");
+        btEnter.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btLoginActionPerformed(evt);
+                btEnterActionPerformed(evt);
             }
         });
 
@@ -201,7 +215,7 @@ public class WatchEye extends JFrame {
                         .addComponent(loginMailLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 285, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
                         .addComponent(loginMailField, javax.swing.GroupLayout.PREFERRED_SIZE, 372, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(btLogin, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btEnter, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(btResetPassword, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(btLoginRegister, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(319, 319, 319))
@@ -220,7 +234,7 @@ public class WatchEye extends JFrame {
                     .addComponent(loginPasslLabel, javax.swing.GroupLayout.DEFAULT_SIZE, 76, Short.MAX_VALUE)
                     .addComponent(loginPasswordField))
                 .addGap(18, 18, 18)
-                .addComponent(btLogin, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(btEnter, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(btResetPassword, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
@@ -231,6 +245,8 @@ public class WatchEye extends JFrame {
 
         loginScreen.add(loginPanel);
         loginPanel.setBounds(0, 218, 1280, 500);
+
+        registerPanel.setBackground(new java.awt.Color(0, 153, 153));
 
         regNameLabel.setLabelFor(regNameField);
         regNameLabel.setText("Nome");
@@ -402,22 +418,56 @@ public class WatchEye extends JFrame {
         } else {
             Server.getInstance().login(new User(regNameField.getText(), regMailField.getText(), new String(regPasswordField.getPassword()), regGenderBox.getSelectedIndex(), ddBox.getSelectedItem() +"-"+ mmBox.getSelectedItem() +"-" + yyyyBox.getSelectedItem()));
             Server.getInstance().addUser(Server.getInstance().getCurrentUser());
+            Server.getInstance().login(Server.getInstance().getCurrentUser());
         }
     }//GEN-LAST:event_btRegisterActionPerformed
 
     private void formWindowClosing(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosing
         Toolkit.getDefaultToolkit().beep();
-        int confirm = JOptionPane.showConfirmDialog(loginScreen, "Você deseja mesmo Sair?", "Aviso", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
+        int confirm = JOptionPane.showConfirmDialog(loginScreen.isVisible()? loginScreen : homeScreen, "Você deseja mesmo Sair?", "Aviso", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
         if (confirm == 0) {
             Server.getInstance().shutdown();
             dispose();
         }
     }//GEN-LAST:event_formWindowClosing
 
-    private void btLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btLoginActionPerformed
-        Server.getInstance().login(loginMailField.getText(), new String(loginPasswordField.getPassword()));
-    }//GEN-LAST:event_btLoginActionPerformed
+    private void btEnterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btEnterActionPerformed
+        Server.getInstance().enter(loginMailField.getText(), new String(loginPasswordField.getPassword()));
+    }//GEN-LAST:event_btEnterActionPerformed
 
+    private void btLogoffActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btLogoffActionPerformed
+        Toolkit.getDefaultToolkit().beep();
+        int confirm = JOptionPane.showConfirmDialog(homeScreen, "Você deseja mesmo Sair?", "Aviso", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
+        if (confirm == 0) {
+            loginScreen.setVisible(true);
+            loginScreen.setEnabled(true);
+            if(homeScreen.isVisible()){
+                homeScreen.setVisible(false);
+                homeScreen.setEnabled(false);
+                if(!loginPanel.isVisible()){
+                    loginPanel.setVisible(true);
+                    loginPanel.setEnabled(true);
+                }
+            }
+        }
+    }//GEN-LAST:event_btLogoffActionPerformed
+
+    public void welcome(User user){
+        btProfile.setText(user.getName());
+        homeScreen.setVisible(true);
+        homeScreen.setEnabled(true);
+        if(loginScreen.isVisible()){
+            loginScreen.setVisible(false);
+            loginScreen.setEnabled(false);
+            if(registerPanel.isVisible()){
+                registerPanel.setVisible(false);
+                registerPanel.setEnabled(false);
+            }
+            loginPanel.setVisible(false);
+            loginPanel.setEnabled(false);
+        }
+    }
+    
     /**
      * @param args the command line arguments
      */
@@ -459,20 +509,19 @@ public class WatchEye extends JFrame {
     }
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btLogin;
+    private javax.swing.JButton btBuddies;
+    private javax.swing.JButton btEnter;
+    private javax.swing.JButton btGroups;
     private javax.swing.JButton btLoginRegister;
+    private javax.swing.JButton btLogoff;
+    private javax.swing.JButton btProfile;
     private javax.swing.JButton btRegister;
     private javax.swing.JButton btResetPassword;
     private javax.swing.JComboBox<String> ddBox;
+    private javax.swing.JPanel headerPanel;
     private javax.swing.JPanel homeScreen;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton4;
-    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
-    private javax.swing.JPanel jPanel1;
     private javax.swing.JLabel loginFootnote;
     private javax.swing.JLabel loginHeader;
     private javax.swing.JTextField loginMailField;
@@ -482,6 +531,7 @@ public class WatchEye extends JFrame {
     private javax.swing.JPasswordField loginPasswordField;
     private javax.swing.JPanel loginScreen;
     private javax.swing.JComboBox<String> mmBox;
+    private javax.swing.JLabel profileIcon;
     private javax.swing.JLabel regDobLabel;
     private javax.swing.JLabel regFootnote;
     private javax.swing.JComboBox<String> regGenderBox;
