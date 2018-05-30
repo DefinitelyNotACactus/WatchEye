@@ -5,6 +5,8 @@
  */
 package server;
 
+import executable.WatchEye;
+import java.awt.Toolkit;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
@@ -12,6 +14,7 @@ import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.io.Serializable;
 import java.util.HashMap;
+import javax.swing.JOptionPane;
 import user.User;
 
 /**
@@ -21,9 +24,13 @@ import user.User;
 public class Server implements Serializable {
     
     private static Server instance = deserialize();
+    
     //Login Field
     private HashMap<String, String> user;
-    private User currentUser = null;
+    
+    //Transient Fields
+    private transient User currentUser = null;
+    private transient WatchEye client;
     
     private Server(){
         user = new HashMap<>();
@@ -42,22 +49,19 @@ public class Server implements Serializable {
     
     private void serialize(){
         try {
-            FileOutputStream fileOut = new FileOutputStream("server.ser");
-            ObjectOutputStream out = new ObjectOutputStream(fileOut);
-            out.writeObject(instance);
-            out.close();
-            fileOut.close();
+            try (FileOutputStream fileOut = new FileOutputStream("server.ser"); ObjectOutputStream out = new ObjectOutputStream(fileOut)) {
+                out.writeObject(instance);
+            }
         } catch (IOException i) {
         }
     }
     
     private static Server deserialize(){
         try {
-            FileInputStream fileIn = new FileInputStream("server.ser");
-            ObjectInputStream in = new ObjectInputStream(fileIn);
-            Server server = (Server) in.readObject();
-            in.close();
-            fileIn.close();
+            Server server;
+            try (FileInputStream fileIn = new FileInputStream("server.ser"); ObjectInputStream in = new ObjectInputStream(fileIn)) {
+                server = (Server) in.readObject();
+            }
             return server;
         } catch (IOException | ClassNotFoundException i) {
         }
@@ -79,9 +83,10 @@ public class Server implements Serializable {
                     fileIn.close();
                 } catch (IOException | ClassNotFoundException i) {
                 }
-            } else {
-                System.out.println("Senha errada");
             }
+        } else {
+                Toolkit.getDefaultToolkit().beep();
+                JOptionPane.showMessageDialog(client.getLoginScreen(), "E-mail e/ou senha está(ão) errado(s)!", "Erro", JOptionPane.ERROR_MESSAGE);  
         }
     }
     
@@ -91,5 +96,9 @@ public class Server implements Serializable {
     
     public User getCurrentUser(){
         return currentUser;
+    }
+    
+    public void setClient(WatchEye client){
+        this.client = client;
     }
 }

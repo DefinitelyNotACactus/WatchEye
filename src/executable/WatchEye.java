@@ -8,6 +8,7 @@ package executable;
 import java.awt.Toolkit;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
+import javax.swing.JPanel;
 import server.Server;
 import user.User;
 import util.Validator;
@@ -365,11 +366,17 @@ public class WatchEye extends JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new WatchEye().setVisible(true);
+                WatchEye client = new WatchEye();
+                Server.getInstance().setClient(client);
+                client.setVisible(true);
             }
         });
     }
 
+    public JPanel getLoginScreen(){
+        return loginScreen;
+    }
+    
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btLogin;
     private javax.swing.JButton btLoginRegister;
