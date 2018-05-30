@@ -22,11 +22,11 @@ public class User implements Serializable {
     private String email;
     private String password;
     private int gender;
-    private String dob;
+    private final String dob;
     
     //Array Fields
-    private ArrayList<String> buddies;
-    private ArrayList<String> blocked;
+    private ArrayList<User> buddies;
+    private ArrayList<User> blocked;
     
     public User(String name, String email, String password, int gender, String dob){
         this.name = name;
@@ -50,6 +50,26 @@ public class User implements Serializable {
         }
     }
     
+    public void addFriend(User toAdd){
+        buddies.add(toAdd);
+    }
+    
+    public void removeFriend(User toRemove){
+        if(buddies.contains(toRemove)){
+            buddies.remove(toRemove);
+        }
+    }
+    
+    public void blockUser(User toBlock){
+        blocked.add(toBlock);
+    }
+    
+    public void unblockUser(User toUnblock){
+        if(blocked.contains(toUnblock)){
+            blocked.remove(toUnblock);
+        }
+    }
+    
     public String getName(){
         return name;
     }
@@ -62,7 +82,23 @@ public class User implements Serializable {
         return email;
     }
     
+    public void setMail(String newMail){
+        email = newMail;
+    }
+    
     public String getPassword(){
         return password;
+    }
+    
+    public void setPassword(String newPassword){
+        password = newPassword;
+    }
+    
+    public int getGender(){
+        return gender;
+    }
+    
+    public void setGender(int newGender){
+        gender = newGender;
     }
 }

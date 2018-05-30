@@ -99,14 +99,6 @@ public class LoginServer implements Serializable {
         currentUser = null;
     }
     
-    /**
-     * Use login instead
-     */
-    @Deprecated
-    private void setCurrentUser(User user){
-        currentUser = user;
-    }
-    
     public User getCurrentUser(){
         return currentUser;
     }
