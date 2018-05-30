@@ -74,6 +74,7 @@ public class WatchEye extends JFrame {
         });
 
         registerPanel.setVisible(false);
+        registerPanel.setEnabled(false);
         loginScreen.setLayout(null);
 
         welcomeLogo.setText("logo");
@@ -267,7 +268,7 @@ public class WatchEye extends JFrame {
         );
 
         loginScreen.add(registerPanel);
-        registerPanel.setBounds(0, 218, 0, 0);
+        registerPanel.setBounds(0, 218, 1280, 502);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);

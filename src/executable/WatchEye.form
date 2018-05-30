@@ -40,7 +40,7 @@
   <SubComponents>
     <Container class="javax.swing.JPanel" name="loginScreen">
       <AuxValues>
-        <AuxValue name="JavaCodeGenerator_InitCodePre" type="java.lang.String" value="registerPanel.setVisible(false);"/>
+        <AuxValue name="JavaCodeGenerator_InitCodePre" type="java.lang.String" value="registerPanel.setVisible(false);&#xa;registerPanel.setEnabled(false);"/>
       </AuxValues>
 
       <Layout class="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout">
