@@ -11,7 +11,7 @@ import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
-import server.Server;
+import server.LoginServer;
 import user.User;
 import util.Validator;
 
@@ -403,7 +403,7 @@ public class WatchEye extends JFrame {
         } else if(!Validator.validateEmail(regMailField.getText())){
             Toolkit.getDefaultToolkit().beep();
             JOptionPane.showMessageDialog(loginScreen, "O e-mail não é válido!", "Aviso", JOptionPane.WARNING_MESSAGE);
-        } else if(Server.getInstance().emailInUse(regMailField.getText())){
+        } else if(LoginServer.getInstance().emailInUse(regMailField.getText())){
             Toolkit.getDefaultToolkit().beep();
             JOptionPane.showMessageDialog(loginScreen, "O e-mail já está em uso!", "Aviso", JOptionPane.WARNING_MESSAGE);
         } else if(regPasswordField.getPassword().length < 6){
@@ -416,9 +416,9 @@ public class WatchEye extends JFrame {
              Toolkit.getDefaultToolkit().beep();
             JOptionPane.showMessageDialog(loginScreen, "A data de nascimento não é válida!", "Aviso", JOptionPane.WARNING_MESSAGE);  
         } else {
-            Server.getInstance().login(new User(regNameField.getText(), regMailField.getText(), new String(regPasswordField.getPassword()), regGenderBox.getSelectedIndex(), ddBox.getSelectedItem() +"-"+ mmBox.getSelectedItem() +"-" + yyyyBox.getSelectedItem()));
-            Server.getInstance().addUser(Server.getInstance().getCurrentUser());
-            Server.getInstance().login(Server.getInstance().getCurrentUser());
+            LoginServer.getInstance().login(new User(regNameField.getText(), regMailField.getText(), new String(regPasswordField.getPassword()), regGenderBox.getSelectedIndex(), ddBox.getSelectedItem() +"-"+ mmBox.getSelectedItem() +"-" + yyyyBox.getSelectedItem()));
+            LoginServer.getInstance().addUser(LoginServer.getInstance().getCurrentUser());
+            LoginServer.getInstance().login(LoginServer.getInstance().getCurrentUser());
         }
     }//GEN-LAST:event_btRegisterActionPerformed
 
@@ -426,13 +426,13 @@ public class WatchEye extends JFrame {
         Toolkit.getDefaultToolkit().beep();
         int confirm = JOptionPane.showConfirmDialog(loginScreen.isVisible()? loginScreen : homeScreen, "Você deseja mesmo Sair?", "Aviso", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
         if (confirm == 0) {
-            Server.getInstance().shutdown();
+            LoginServer.getInstance().shutdown();
             dispose();
         }
     }//GEN-LAST:event_formWindowClosing
 
     private void btEnterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btEnterActionPerformed
-        Server.getInstance().enter(loginMailField.getText(), new String(loginPasswordField.getPassword()));
+        LoginServer.getInstance().enter(loginMailField.getText(), new String(loginPasswordField.getPassword()));
     }//GEN-LAST:event_btEnterActionPerformed
 
     private void btLogoffActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btLogoffActionPerformed
@@ -499,7 +499,7 @@ public class WatchEye extends JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(() -> {
             WatchEye client = new WatchEye();
-            Server.getInstance().setClient(client);
+            LoginServer.getInstance().setClient(client);
             client.setVisible(true);
         });
     }

@@ -21,9 +21,9 @@ import user.User;
  *
  * @author David
  */
-public class Server implements Serializable {
+public class LoginServer implements Serializable {
     
-    private static Server instance = new Server();
+    private static LoginServer instance = new LoginServer();
     
     //Login Field
     private HashMap<String, String> user = new HashMap<>();
@@ -32,11 +32,11 @@ public class Server implements Serializable {
     private transient User currentUser = null;
     private transient WatchEye client;
     
-    private Server(){
+    private LoginServer(){
         deserialize();
     }
     
-    public static Server getInstance(){
+    public static LoginServer getInstance(){
         return instance;
     }
     
@@ -59,7 +59,7 @@ public class Server implements Serializable {
     private void deserialize(){
         try {
             try (FileInputStream fileIn = new FileInputStream("data/server.ser"); ObjectInputStream in = new ObjectInputStream(fileIn)) {
-                instance = (Server) in.readObject();
+                instance = (LoginServer) in.readObject();
                 user = instance.user;
             }
         } catch (IOException | ClassNotFoundException i) {
