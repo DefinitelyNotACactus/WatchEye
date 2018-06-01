@@ -166,6 +166,7 @@ public class WatchEye extends JFrame {
         homeScreen.setVisible(false);
         homeScreen.setEnabled(true);
         homeScreen.setBackground(new java.awt.Color(153, 153, 153));
+        homeScreen.setPreferredSize(new java.awt.Dimension(0, 0));
 
         headerPanel.setBackground(new java.awt.Color(0, 153, 51));
 
@@ -200,7 +201,7 @@ public class WatchEye extends JFrame {
                 .addComponent(profileIcon, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(btProfile, javax.swing.GroupLayout.PREFERRED_SIZE, 240, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 479, Short.MAX_VALUE)
                 .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(btBuddies, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -383,8 +384,18 @@ public class WatchEye extends JFrame {
         jButton1.setText("jButton1");
 
         newFriendField.setText("Pesquisar amigo para adicionar...");
+        newFriendField.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                newFriendFieldMouseClicked(evt);
+            }
+        });
 
         btSend.setText("btSend");
+        btSend.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btSendActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout friendPanelLayout = new javax.swing.GroupLayout(friendPanel);
         friendPanel.setLayout(friendPanelLayout);
@@ -541,10 +552,10 @@ public class WatchEye extends JFrame {
                         .addGroup(friendPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(newFriendField)
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, friendPanelLayout.createSequentialGroup()
-                                .addComponent(btFriendPrev, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(btFriendPrev, javax.swing.GroupLayout.DEFAULT_SIZE, 252, Short.MAX_VALUE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(btFriendNext, javax.swing.GroupLayout.PREFERRED_SIZE, 251, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(btFriend8, javax.swing.GroupLayout.DEFAULT_SIZE, 509, Short.MAX_VALUE))
+                            .addComponent(btFriend8, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(friendPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(btSend, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
@@ -687,15 +698,15 @@ public class WatchEye extends JFrame {
         homeScreen.setLayout(homeScreenLayout);
         homeScreenLayout.setHorizontalGroup(
             homeScreenLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(headerPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(friendPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(friendPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addComponent(headerPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
         homeScreenLayout.setVerticalGroup(
             homeScreenLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(homeScreenLayout.createSequentialGroup()
                 .addComponent(headerPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(friendPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addComponent(friendPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
         registerPanel.setVisible(false);
@@ -908,14 +919,14 @@ public class WatchEye extends JFrame {
             .addComponent(loginScreen, javax.swing.GroupLayout.PREFERRED_SIZE, 1280, javax.swing.GroupLayout.PREFERRED_SIZE)
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(layout.createSequentialGroup()
-                    .addComponent(homeScreen, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(homeScreen, javax.swing.GroupLayout.PREFERRED_SIZE, 1280, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGap(0, 0, Short.MAX_VALUE)))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(loginScreen, javax.swing.GroupLayout.PREFERRED_SIZE, 720, javax.swing.GroupLayout.PREFERRED_SIZE)
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addComponent(homeScreen, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addComponent(homeScreen, javax.swing.GroupLayout.PREFERRED_SIZE, 720, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
         pack();
@@ -999,6 +1010,14 @@ public class WatchEye extends JFrame {
         friendPanel.setVisible(true);
         friendPanel.setEnabled(true);
     }//GEN-LAST:event_btBuddiesActionPerformed
+
+    private void newFriendFieldMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_newFriendFieldMouseClicked
+        newFriendField.setText("");
+    }//GEN-LAST:event_newFriendFieldMouseClicked
+
+    private void btSendActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btSendActionPerformed
+        new FriendRequestHandler(newFriendField.getText(), LoginServer.getInstance().getCurrentUser());
+    }//GEN-LAST:event_btSendActionPerformed
 
     public void welcome(User user){
         btProfile.setText(user.getName());
