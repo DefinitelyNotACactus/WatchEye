@@ -13,9 +13,12 @@ import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Iterator;
 import javax.swing.JOptionPane;
 import user.User;
+import util.Serializator;
 
 /**
  *
@@ -27,6 +30,10 @@ public class LoginServer implements Serializable {
     
     //Login Field
     private HashMap<String, String> user = new HashMap<>();
+    
+    //Request Field
+    private HashMap<String, ArrayList<User>> request = new HashMap<>();
+    private transient ArrayList<User> request_list = new ArrayList<>();
     
     //Transient Fields
     private transient User currentUser = null;
@@ -42,7 +49,7 @@ public class LoginServer implements Serializable {
     
     public void shutdown(){
         if(currentUser != null){
-            currentUser.serialize(currentUser);
+            Serializator.serializeUser(currentUser);
         }
         serialize();
     }
@@ -92,11 +99,21 @@ public class LoginServer implements Serializable {
     public void login(User user){
         currentUser = user;
         client.welcome(currentUser);
+        if(request.containsKey(user.getMail())){
+            Iterator<User> it = request_list.iterator();
+            while(it.hasNext()){
+                User requester = it.next();
+                user.addFriendRequest(requester);
+                it.remove();
+            }
+            request.remove(user.getMail());
+        }
     }
     
     public void logoff(){
         currentUser.serialize(currentUser);
         currentUser = null;
+        request_list.clear();
     }
     
     public User getCurrentUser(){
@@ -109,5 +126,21 @@ public class LoginServer implements Serializable {
     
     public boolean emailInUse(String email){
         return user.containsKey(email);
+    }
+    
+    public void addNewFriendRequest(String email, User user){
+        request_list.add(user);
+        request.put(email, request_list);
+    }
+    
+    public void friendRequestResponse(int id, boolean accept){
+        User sender = Serializator.deserializeUser(currentUser.getFriendRequestList().get(id).getMail());
+        if(accept){
+            currentUser.addFriend(sender);
+        }      
+        sender.addFriend(currentUser);
+        Serializator.serializeUser(sender);
+        currentUser.getFriendRequestList().remove(id);
+        client.updateAndListFriendPanel(currentUser);
     }
 }

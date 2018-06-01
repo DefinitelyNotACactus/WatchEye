@@ -7,12 +7,14 @@ package executable;
 
 import java.awt.Image;
 import java.awt.Toolkit;
+import java.util.Iterator;
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import server.LoginServer;
 import user.User;
+import util.Serializator;
 import util.Validator;
 
 /**
@@ -73,15 +75,15 @@ public class WatchEye extends JFrame {
         btFriend5 = new javax.swing.JButton();
         btFriendOption5 = new javax.swing.JButton();
         friendLabel6 = new javax.swing.JLabel();
-        btFriend6 = new javax.swing.JButton();
+        btFriend8 = new javax.swing.JButton();
         btFriendOption6 = new javax.swing.JButton();
         friendLabel7 = new javax.swing.JLabel();
         btFriend7 = new javax.swing.JButton();
         btFriendOption7 = new javax.swing.JButton();
         friendLabel8 = new javax.swing.JLabel();
-        btFriend8 = new javax.swing.JButton();
         btFriendOption8 = new javax.swing.JButton();
         friendLabel9 = new javax.swing.JLabel();
+        btFriend6 = new javax.swing.JButton();
         btFriend9 = new javax.swing.JButton();
         btFriendOption9 = new javax.swing.JButton();
         friendLabel10 = new javax.swing.JLabel();
@@ -121,7 +123,7 @@ public class WatchEye extends JFrame {
         btRequestNext = new javax.swing.JButton();
         btBlockPrev = new javax.swing.JButton();
         btBlockNext = new javax.swing.JButton();
-        jButton1 = new javax.swing.JButton();
+        btReturn = new javax.swing.JButton();
         newFriendField = new javax.swing.JTextField();
         btSend = new javax.swing.JButton();
         loginScreen = new javax.swing.JPanel();
@@ -232,156 +234,475 @@ public class WatchEye extends JFrame {
 
         friendPanel.setEnabled(false);
         friendPanel.setVisible(false);
+        friendPanel.setBackground(new java.awt.Color(204, 204, 0));
+        friendPanel.setLayout(null);
 
         friendLabel1.setText("friendLabel1");
+        friendLabel1.setVisible(false);
+        friendPanel.add(friendLabel1);
+        friendLabel1.setBounds(10, 61, 40, 40);
 
         btFriend1.setText("btFriend1");
+        btFriend1.setEnabled(false);
+        btFriend1.setVisible(false);
+        friendPanel.add(btFriend1);
+        btFriend1.setBounds(54, 61, 509, 40);
 
         friendListLabel.setText("Amigos");
+        friendPanel.add(friendListLabel);
+        friendListLabel.setBounds(10, 11, 620, 44);
 
         friendRequestListLabel.setText("Pedidos de Amizade");
+        friendPanel.add(friendRequestListLabel);
+        friendRequestListLabel.setBounds(640, 11, 310, 44);
 
         blockedListLabel.setText("Bloqueado");
+        friendPanel.add(blockedListLabel);
+        blockedListLabel.setBounds(960, 11, 310, 44);
 
         btFriendOption1.setText("btOption1");
+        btFriendOption1.setVisible(false);
+        btFriendOption1.setEnabled(false);
+        friendPanel.add(btFriendOption1);
+        btFriendOption1.setBounds(569, 61, 61, 40);
 
         frLabel1.setText("friendIcon1");
+        frLabel1.setVisible(false);
+        friendPanel.add(frLabel1);
+        frLabel1.setBounds(640, 61, 40, 40);
 
         frNameLabel1.setText("friendName1");
+        frNameLabel1.setVisible(false);
+        friendPanel.add(frNameLabel1);
+        frNameLabel1.setBounds(686, 61, 264, 40);
 
-        btAccept1.setText("btAccept1");
+        btAccept1.setText("Aceitar");
+        btAccept1.setEnabled(false);
+        btAccept1.setVisible(false);
+        btAccept1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btAccept1ActionPerformed(evt);
+            }
+        });
+        friendPanel.add(btAccept1);
+        btAccept1.setBounds(640, 107, 152, 40);
 
-        btDecline1.setText("btDecline1");
+        btDecline1.setText("Recusar");
+        btDecline1.setEnabled(false);
+        btDecline1.setVisible(false);
+        btDecline1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btDecline1ActionPerformed(evt);
+            }
+        });
+        friendPanel.add(btDecline1);
+        btDecline1.setBounds(802, 107, 148, 40);
 
         blLabel1.setText("blockedIcon1");
+        blLabel1.setVisible(false);
+        friendPanel.add(blLabel1);
+        blLabel1.setBounds(960, 61, 40, 40);
 
         blNameLabel1.setText("blockedName1");
+        blNameLabel1.setVisible(false);
+        friendPanel.add(blNameLabel1);
+        blNameLabel1.setBounds(1006, 61, 264, 40);
 
-        btUnblock1.setText("btUnblock1");
+        btUnblock1.setText("Desbloquear");
+        btUnblock1.setEnabled(false);
+        btUnblock1.setVisible(false);
+        friendPanel.add(btUnblock1);
+        btUnblock1.setBounds(960, 107, 310, 40);
 
         friendLabel2.setText("friendLabel1");
+        friendLabel2.setVisible(false);
+        friendPanel.add(friendLabel2);
+        friendLabel2.setBounds(10, 107, 40, 40);
 
         btFriend2.setText("btFriend1");
+        btFriend2.setEnabled(false);
+        btFriend2.setVisible(false);
+        friendPanel.add(btFriend2);
+        btFriend2.setBounds(54, 107, 509, 40);
 
         btFriendOption2.setText("btOption1");
+        btFriendOption2.setVisible(false);
+        btFriendOption2.setEnabled(false);
+        friendPanel.add(btFriendOption2);
+        btFriendOption2.setBounds(569, 107, 61, 40);
 
         friendLabel3.setText("friendLabel1");
+        friendLabel3.setVisible(false);
+        friendPanel.add(friendLabel3);
+        friendLabel3.setBounds(10, 153, 40, 40);
 
         btFriend3.setText("btFriend1");
+        btFriend3.setEnabled(false);
+        btFriend3.setVisible(false);
+        friendPanel.add(btFriend3);
+        btFriend3.setBounds(54, 153, 509, 40);
 
         btFriendOption3.setText("btOption1");
+        btFriendOption3.setVisible(false);
+        btFriendOption3.setEnabled(false);
+        friendPanel.add(btFriendOption3);
+        btFriendOption3.setBounds(569, 153, 61, 40);
 
         friendLabel4.setText("friendLabel1");
+        friendLabel4.setVisible(false);
+        friendPanel.add(friendLabel4);
+        friendLabel4.setBounds(10, 199, 40, 40);
 
         btFriend4.setText("btFriend1");
+        btFriend4.setEnabled(false);
+        btFriend4.setVisible(false);
+        friendPanel.add(btFriend4);
+        btFriend4.setBounds(54, 199, 509, 40);
 
         btFriendOption4.setText("btOption1");
+        btFriendOption4.setVisible(false);
+        btFriendOption4.setEnabled(false);
+        friendPanel.add(btFriendOption4);
+        btFriendOption4.setBounds(569, 199, 61, 40);
 
         friendLabel5.setText("friendLabel1");
+        friendLabel5.setVisible(false);
+        friendPanel.add(friendLabel5);
+        friendLabel5.setBounds(10, 245, 40, 40);
 
         btFriend5.setText("btFriend1");
+        btFriend5.setEnabled(false);
+        btFriend5.setVisible(false);
+        friendPanel.add(btFriend5);
+        btFriend5.setBounds(54, 245, 509, 40);
 
         btFriendOption5.setText("btOption1");
+        btFriendOption5.setVisible(false);
+        btFriendOption5.setEnabled(false);
+        friendPanel.add(btFriendOption5);
+        btFriendOption5.setBounds(569, 245, 61, 40);
 
         friendLabel6.setText("friendLabel1");
-
-        btFriend6.setText("btFriend1");
-
-        btFriendOption6.setText("btOption1");
-
-        friendLabel7.setText("friendLabel1");
-
-        btFriend7.setText("btFriend1");
-
-        btFriendOption7.setText("btOption1");
-
-        friendLabel8.setText("friendLabel1");
+        friendLabel6.setVisible(false);
+        friendPanel.add(friendLabel6);
+        friendLabel6.setBounds(10, 291, 40, 40);
 
         btFriend8.setText("btFriend1");
+        btFriend8.setEnabled(false);
+        btFriend8.setVisible(false);
+        friendPanel.add(btFriend8);
+        btFriend8.setBounds(54, 383, 509, 40);
+
+        btFriendOption6.setText("btOption1");
+        btFriendOption6.setVisible(false);
+        btFriendOption6.setEnabled(false);
+        friendPanel.add(btFriendOption6);
+        btFriendOption6.setBounds(569, 291, 61, 40);
+
+        friendLabel7.setText("friendLabel1");
+        friendLabel7.setVisible(false);
+        friendPanel.add(friendLabel7);
+        friendLabel7.setBounds(10, 337, 40, 40);
+
+        btFriend7.setText("btFriend1");
+        btFriend7.setEnabled(false);
+        btFriend7.setVisible(false);
+        friendPanel.add(btFriend7);
+        btFriend7.setBounds(54, 337, 509, 40);
+
+        btFriendOption7.setText("btOption1");
+        btFriendOption7.setVisible(false);
+        btFriendOption7.setEnabled(false);
+        friendPanel.add(btFriendOption7);
+        btFriendOption7.setBounds(569, 337, 61, 40);
+
+        friendLabel8.setText("friendLabel1");
+        friendLabel8.setVisible(false);
+        friendPanel.add(friendLabel8);
+        friendLabel8.setBounds(10, 383, 40, 40);
 
         btFriendOption8.setText("btOption1");
+        btFriendOption8.setVisible(false);
+        btFriendOption8.setEnabled(false);
+        friendPanel.add(btFriendOption8);
+        btFriendOption8.setBounds(569, 383, 61, 40);
 
         friendLabel9.setText("friendLabel1");
+        friendLabel9.setVisible(false);
+        friendPanel.add(friendLabel9);
+        friendLabel9.setBounds(10, 429, 40, 40);
+
+        btFriend6.setText("btFriend1");
+        btFriend6.setEnabled(false);
+        btFriend6.setVisible(false);
+        friendPanel.add(btFriend6);
+        btFriend6.setBounds(54, 291, 509, 40);
 
         btFriend9.setText("btFriend1");
+        btFriend9.setEnabled(false);
+        btFriend9.setVisible(false);
+        friendPanel.add(btFriend9);
+        btFriend9.setBounds(54, 429, 509, 40);
 
         btFriendOption9.setText("btOption1");
+        btFriendOption9.setVisible(false);
+        btFriendOption9.setEnabled(false);
+        friendPanel.add(btFriendOption9);
+        btFriendOption9.setBounds(569, 429, 61, 40);
 
         friendLabel10.setText("friendLabel1");
+        friendLabel10.setVisible(false);
+        friendPanel.add(friendLabel10);
+        friendLabel10.setBounds(10, 475, 40, 40);
 
         btFriend10.setText("btFriend1");
+        btFriend10.setEnabled(false);
+        btFriend10.setVisible(false);
+        friendPanel.add(btFriend10);
+        btFriend10.setBounds(54, 475, 509, 40);
 
         btFriendOption10.setText("btOption1");
+        btFriendOption10.setVisible(false);
+        btFriendOption10.setEnabled(false);
+        friendPanel.add(btFriendOption10);
+        btFriendOption10.setBounds(569, 475, 61, 40);
 
         frLabel2.setText("friendIcon1");
+        frLabel2.setVisible(false);
+        friendPanel.add(frLabel2);
+        frLabel2.setBounds(640, 153, 40, 40);
 
         frNameLabel2.setText("friendName1");
+        frNameLabel2.setVisible(false);
+        friendPanel.add(frNameLabel2);
+        frNameLabel2.setBounds(686, 153, 264, 40);
 
-        btAccept2.setText("btAccept1");
+        btAccept2.setText("Aceitar");
+        btAccept2.setEnabled(false);
+        btAccept2.setVisible(false);
+        btAccept2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btAccept2ActionPerformed(evt);
+            }
+        });
+        friendPanel.add(btAccept2);
+        btAccept2.setBounds(640, 199, 152, 40);
 
-        btDecline2.setText("btDecline1");
+        btDecline2.setText("Recusar");
+        btDecline2.setEnabled(false);
+        btDecline2.setVisible(false);
+        btDecline2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btDecline2ActionPerformed(evt);
+            }
+        });
+        friendPanel.add(btDecline2);
+        btDecline2.setBounds(802, 199, 148, 40);
 
         frLabel3.setText("friendIcon1");
+        frLabel3.setVisible(false);
+        friendPanel.add(frLabel3);
+        frLabel3.setBounds(640, 245, 40, 40);
 
         frNameLabel3.setText("friendName1");
+        frNameLabel3.setVisible(false);
+        friendPanel.add(frNameLabel3);
+        frNameLabel3.setBounds(686, 245, 264, 40);
 
-        btAccept3.setText("btAccept1");
+        btAccept3.setText("Aceitar");
+        btAccept3.setEnabled(false);
+        btAccept3.setVisible(false);
+        btAccept3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btAccept3ActionPerformed(evt);
+            }
+        });
+        friendPanel.add(btAccept3);
+        btAccept3.setBounds(640, 291, 152, 40);
 
-        btDecline3.setText("btDecline1");
+        btDecline3.setText("Recusar");
+        btDecline3.setEnabled(false);
+        btDecline3.setVisible(false);
+        btDecline3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btDecline3ActionPerformed(evt);
+            }
+        });
+        friendPanel.add(btDecline3);
+        btDecline3.setBounds(802, 291, 148, 40);
 
         frLabel4.setText("friendIcon1");
+        frLabel4.setVisible(false);
+        friendPanel.add(frLabel4);
+        frLabel4.setBounds(640, 337, 40, 40);
 
         frNameLabel4.setText("friendName1");
+        frNameLabel4.setVisible(false);
+        friendPanel.add(frNameLabel4);
+        frNameLabel4.setBounds(686, 337, 264, 40);
 
-        btAccept4.setText("btAccept1");
+        btAccept4.setText("Aceitar");
+        btAccept4.setEnabled(false);
+        btAccept4.setVisible(false);
+        btAccept4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btAccept4ActionPerformed(evt);
+            }
+        });
+        friendPanel.add(btAccept4);
+        btAccept4.setBounds(640, 383, 152, 40);
 
-        btDecline4.setText("btDecline1");
+        btDecline4.setText("Recusar");
+        btDecline4.setEnabled(false);
+        btDecline4.setVisible(false);
+        btDecline4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btDecline4ActionPerformed(evt);
+            }
+        });
+        friendPanel.add(btDecline4);
+        btDecline4.setBounds(802, 383, 148, 40);
 
         frLabel5.setText("friendIcon1");
+        frLabel5.setVisible(false);
+        friendPanel.add(frLabel5);
+        frLabel5.setBounds(640, 429, 40, 40);
 
         frNameLabel5.setText("friendName1");
+        frNameLabel5.setVisible(false);
+        friendPanel.add(frNameLabel5);
+        frNameLabel5.setBounds(686, 429, 264, 40);
 
-        btAccept5.setText("btAccept1");
+        btAccept5.setText("Aceitar");
+        btAccept5.setEnabled(false);
+        btAccept5.setVisible(false);
+        btAccept5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btAccept5ActionPerformed(evt);
+            }
+        });
+        friendPanel.add(btAccept5);
+        btAccept5.setBounds(640, 475, 152, 40);
 
-        btDecline5.setText("btDecline1");
+        btDecline5.setText("Recusar");
+        btDecline5.setEnabled(false);
+        btDecline5.setVisible(false);
+        btDecline5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btDecline5ActionPerformed(evt);
+            }
+        });
+        friendPanel.add(btDecline5);
+        btDecline5.setBounds(802, 475, 148, 40);
 
         blLabel2.setText("blockedIcon1");
+        blLabel2.setVisible(false);
+        friendPanel.add(blLabel2);
+        blLabel2.setBounds(960, 153, 40, 40);
 
         blNameLabel2.setText("blockedName1");
+        blNameLabel2.setVisible(false);
+        friendPanel.add(blNameLabel2);
+        blNameLabel2.setBounds(1006, 153, 264, 40);
 
-        btUnblock2.setText("btUnblock1");
+        btUnblock2.setText("Desbloquear");
+        btUnblock2.setEnabled(false);
+        btUnblock2.setVisible(false);
+        friendPanel.add(btUnblock2);
+        btUnblock2.setBounds(960, 199, 310, 40);
 
         blLabel3.setText("blockedIcon1");
+        blLabel3.setVisible(false);
+        friendPanel.add(blLabel3);
+        blLabel3.setBounds(960, 245, 40, 40);
 
         blNameLabel3.setText("blockedName1");
+        blNameLabel3.setVisible(false);
+        friendPanel.add(blNameLabel3);
+        blNameLabel3.setBounds(1006, 245, 264, 40);
 
-        btUnblock3.setText("btUnblock1");
+        btUnblock3.setText("Desbloquear");
+        btUnblock3.setEnabled(false);
+        btUnblock3.setVisible(false);
+        friendPanel.add(btUnblock3);
+        btUnblock3.setBounds(960, 291, 310, 40);
 
         blLabel4.setText("blockedIcon1");
+        blLabel4.setVisible(false);
+        friendPanel.add(blLabel4);
+        blLabel4.setBounds(960, 337, 40, 40);
 
         blNameLabel4.setText("blockedName1");
+        blNameLabel4.setVisible(false);
+        friendPanel.add(blNameLabel4);
+        blNameLabel4.setBounds(1006, 337, 264, 40);
 
-        btUnblock4.setText("btUnblock1");
+        btUnblock4.setText("Desbloquear");
+        btUnblock4.setEnabled(false);
+        btUnblock4.setVisible(false);
+        friendPanel.add(btUnblock4);
+        btUnblock4.setBounds(960, 383, 310, 40);
 
         blLabel5.setText("blockedIcon1");
+        blLabel5.setVisible(false);
+        friendPanel.add(blLabel5);
+        blLabel5.setBounds(960, 429, 40, 40);
 
         blNameLabel5.setText("blockedName1");
+        blNameLabel5.setVisible(false);
+        friendPanel.add(blNameLabel5);
+        blNameLabel5.setBounds(1006, 429, 264, 40);
 
-        btUnblock5.setText("btUnblock1");
+        btUnblock5.setText("Desbloquear");
+        btUnblock5.setEnabled(false);
+        btUnblock5.setVisible(false);
+        friendPanel.add(btUnblock5);
+        btUnblock5.setBounds(960, 475, 310, 40);
 
-        btFriendPrev.setText("jButton1");
+        btFriendPrev.setText("Anterior");
+        btFriendPrev.setVisible(false);
+        btFriendPrev.setVisible(false);
+        friendPanel.add(btFriendPrev);
+        btFriendPrev.setBounds(54, 521, 252, 40);
 
-        btFriendNext.setText("jButton2");
+        btFriendNext.setText("Próximo");
+        btFriendNext.setVisible(false);
+        btFriendNext.setEnabled(false);
+        friendPanel.add(btFriendNext);
+        btFriendNext.setBounds(312, 521, 251, 40);
 
-        btRequestPrev.setText("btAccept1");
+        btRequestPrev.setText("Anterior");
+        btRequestPrev.setVisible(false);
+        btRequestPrev.setEnabled(false);
+        friendPanel.add(btRequestPrev);
+        btRequestPrev.setBounds(640, 521, 152, 40);
 
-        btRequestNext.setText("btDecline1");
+        btRequestNext.setText("Próximo");
+        btRequestNext.setVisible(false);
+        btRequestNext.setEnabled(false);
+        friendPanel.add(btRequestNext);
+        btRequestNext.setBounds(802, 521, 148, 40);
 
-        btBlockPrev.setText("btAccept1");
+        btBlockPrev.setText("Anterior");
+        btBlockPrev.setVisible(false);
+        btBlockPrev.setEnabled(false);
+        friendPanel.add(btBlockPrev);
+        btBlockPrev.setBounds(960, 521, 152, 40);
 
-        btBlockNext.setText("btDecline1");
+        btBlockNext.setText("Próximo");
+        btBlockNext.setVisible(false);
+        btBlockNext.setEnabled(false);
+        friendPanel.add(btBlockNext);
+        btBlockNext.setBounds(1122, 521, 148, 40);
 
-        jButton1.setText("jButton1");
+        btReturn.setText("Retornar");
+        btReturn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btReturnActionPerformed(evt);
+            }
+        });
+        friendPanel.add(btReturn);
+        btReturn.setBounds(1122, 579, 148, 40);
 
         newFriendField.setText("Pesquisar amigo para adicionar...");
         newFriendField.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -389,6 +710,8 @@ public class WatchEye extends JFrame {
                 newFriendFieldMouseClicked(evt);
             }
         });
+        friendPanel.add(newFriendField);
+        newFriendField.setBounds(54, 579, 509, 40);
 
         btSend.setText("btSend");
         btSend.addActionListener(new java.awt.event.ActionListener() {
@@ -396,317 +719,24 @@ public class WatchEye extends JFrame {
                 btSendActionPerformed(evt);
             }
         });
-
-        javax.swing.GroupLayout friendPanelLayout = new javax.swing.GroupLayout(friendPanel);
-        friendPanel.setLayout(friendPanelLayout);
-        friendPanelLayout.setHorizontalGroup(
-            friendPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(friendPanelLayout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(friendPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(friendPanelLayout.createSequentialGroup()
-                        .addGroup(friendPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(friendListLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 620, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(friendPanelLayout.createSequentialGroup()
-                                .addGroup(friendPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(friendLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(friendLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addGroup(friendPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(friendPanelLayout.createSequentialGroup()
-                                        .addComponent(btFriend2, javax.swing.GroupLayout.PREFERRED_SIZE, 509, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(btFriendOption2, javax.swing.GroupLayout.PREFERRED_SIZE, 61, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addGroup(friendPanelLayout.createSequentialGroup()
-                                        .addComponent(btFriend1, javax.swing.GroupLayout.PREFERRED_SIZE, 509, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(btFriendOption1, javax.swing.GroupLayout.PREFERRED_SIZE, 61, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(friendPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addGroup(friendPanelLayout.createSequentialGroup()
-                                .addComponent(btAccept1, javax.swing.GroupLayout.PREFERRED_SIZE, 152, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(10, 10, 10)
-                                .addComponent(btDecline1, javax.swing.GroupLayout.PREFERRED_SIZE, 148, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(friendPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                .addGroup(friendPanelLayout.createSequentialGroup()
-                                    .addComponent(frLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                    .addComponent(frNameLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 264, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addComponent(friendRequestListLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 310, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(friendPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(blockedListLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addGroup(friendPanelLayout.createSequentialGroup()
-                                .addGroup(friendPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(friendPanelLayout.createSequentialGroup()
-                                        .addComponent(blLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(blNameLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 264, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addComponent(btUnblock1, javax.swing.GroupLayout.PREFERRED_SIZE, 310, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGap(0, 0, Short.MAX_VALUE))))
-                    .addGroup(friendPanelLayout.createSequentialGroup()
-                        .addComponent(friendLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(btFriend9, javax.swing.GroupLayout.PREFERRED_SIZE, 509, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(btFriendOption6, javax.swing.GroupLayout.PREFERRED_SIZE, 61, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(btAccept3, javax.swing.GroupLayout.PREFERRED_SIZE, 152, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(btDecline3, javax.swing.GroupLayout.PREFERRED_SIZE, 148, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(btUnblock3, javax.swing.GroupLayout.PREFERRED_SIZE, 310, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(friendPanelLayout.createSequentialGroup()
-                        .addGroup(friendPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(friendPanelLayout.createSequentialGroup()
-                                .addComponent(friendLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(btFriend3, javax.swing.GroupLayout.PREFERRED_SIZE, 509, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(btFriendOption3, javax.swing.GroupLayout.PREFERRED_SIZE, 61, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(friendPanelLayout.createSequentialGroup()
-                                .addComponent(friendLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(btFriend4, javax.swing.GroupLayout.PREFERRED_SIZE, 509, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(btFriendOption4, javax.swing.GroupLayout.PREFERRED_SIZE, 61, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(friendPanelLayout.createSequentialGroup()
-                                .addComponent(friendLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(btFriend10, javax.swing.GroupLayout.PREFERRED_SIZE, 509, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(btFriendOption5, javax.swing.GroupLayout.PREFERRED_SIZE, 61, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(friendPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(friendPanelLayout.createSequentialGroup()
-                                .addComponent(btAccept2, javax.swing.GroupLayout.PREFERRED_SIZE, 152, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(btDecline2, javax.swing.GroupLayout.PREFERRED_SIZE, 148, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(btUnblock2, javax.swing.GroupLayout.PREFERRED_SIZE, 310, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(friendPanelLayout.createSequentialGroup()
-                                .addGroup(friendPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(friendPanelLayout.createSequentialGroup()
-                                        .addComponent(frLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(frNameLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 264, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                        .addComponent(blLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(blNameLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 264, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addGroup(friendPanelLayout.createSequentialGroup()
-                                        .addComponent(frLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(frNameLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 264, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                        .addComponent(blLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(blNameLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 264, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                .addGap(0, 0, Short.MAX_VALUE))))
-                    .addGroup(friendPanelLayout.createSequentialGroup()
-                        .addComponent(friendLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(btFriend6, javax.swing.GroupLayout.PREFERRED_SIZE, 509, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(btFriendOption8, javax.swing.GroupLayout.PREFERRED_SIZE, 61, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(btAccept4, javax.swing.GroupLayout.PREFERRED_SIZE, 152, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(btDecline4, javax.swing.GroupLayout.PREFERRED_SIZE, 148, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(btUnblock4, javax.swing.GroupLayout.PREFERRED_SIZE, 310, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(friendPanelLayout.createSequentialGroup()
-                        .addGroup(friendPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(friendPanelLayout.createSequentialGroup()
-                                .addComponent(friendLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(btFriend5, javax.swing.GroupLayout.PREFERRED_SIZE, 509, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(btFriendOption9, javax.swing.GroupLayout.PREFERRED_SIZE, 61, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(frLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(frNameLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 264, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(blLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(blNameLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 264, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(friendPanelLayout.createSequentialGroup()
-                                .addComponent(friendLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(btFriend7, javax.swing.GroupLayout.PREFERRED_SIZE, 509, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(btFriendOption7, javax.swing.GroupLayout.PREFERRED_SIZE, 61, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(frLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(frNameLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 264, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(blLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(blNameLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 264, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(0, 0, Short.MAX_VALUE))
-                    .addGroup(friendPanelLayout.createSequentialGroup()
-                        .addComponent(friendLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(friendPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(newFriendField)
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, friendPanelLayout.createSequentialGroup()
-                                .addComponent(btFriendPrev, javax.swing.GroupLayout.DEFAULT_SIZE, 252, Short.MAX_VALUE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(btFriendNext, javax.swing.GroupLayout.PREFERRED_SIZE, 251, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(btFriend8, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(friendPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(btSend, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
-                            .addComponent(btFriendOption10, javax.swing.GroupLayout.PREFERRED_SIZE, 61, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGroup(friendPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(friendPanelLayout.createSequentialGroup()
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addGroup(friendPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(friendPanelLayout.createSequentialGroup()
-                                        .addComponent(btAccept5, javax.swing.GroupLayout.PREFERRED_SIZE, 152, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                        .addComponent(btDecline5, javax.swing.GroupLayout.PREFERRED_SIZE, 148, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                        .addComponent(btUnblock5, javax.swing.GroupLayout.PREFERRED_SIZE, 310, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addGroup(friendPanelLayout.createSequentialGroup()
-                                        .addComponent(btRequestPrev, javax.swing.GroupLayout.PREFERRED_SIZE, 152, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                        .addComponent(btRequestNext, javax.swing.GroupLayout.PREFERRED_SIZE, 148, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                        .addComponent(btBlockPrev, javax.swing.GroupLayout.PREFERRED_SIZE, 152, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                        .addComponent(btBlockNext, javax.swing.GroupLayout.PREFERRED_SIZE, 148, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, friendPanelLayout.createSequentialGroup()
-                                .addGap(492, 492, 492)
-                                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 148, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                .addContainerGap())
-        );
-        friendPanelLayout.setVerticalGroup(
-            friendPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(friendPanelLayout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(friendPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(blockedListLabel, javax.swing.GroupLayout.DEFAULT_SIZE, 44, Short.MAX_VALUE)
-                    .addComponent(friendRequestListLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(friendListLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(friendPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addGroup(friendPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(friendLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(btFriend1, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(btFriendOption1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(frNameLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(frLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(blNameLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(blLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(friendPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(btAccept1, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btUnblock1, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btDecline1, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(friendPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(friendLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(btFriend2, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(btFriendOption2, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(friendPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(friendLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btFriend3, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btFriendOption3, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(frLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(frNameLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(blLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(blNameLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(friendPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(friendLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btFriend4, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btFriendOption4, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btAccept2, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btDecline2, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btUnblock2, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(friendPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(friendLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btFriend10, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btFriendOption5, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(frLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(frNameLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(blLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(blNameLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(friendPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(friendLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btFriend9, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btFriendOption6, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btAccept3, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btDecline3, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btUnblock3, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(friendPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(friendLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btFriend7, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btFriendOption7, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(frLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(frNameLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(blLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(blNameLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(friendPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(friendLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btFriend6, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btFriendOption8, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btAccept4, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btDecline4, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btUnblock4, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(friendPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(friendLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btFriend5, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btFriendOption9, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(frLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(frNameLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(blLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(blNameLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(friendPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(friendLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btFriend8, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btFriendOption10, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btAccept5, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btDecline5, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btUnblock5, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(friendPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btFriendPrev, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btFriendNext, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btRequestPrev, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btRequestNext, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btBlockPrev, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btBlockNext, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(friendPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, 40, Short.MAX_VALUE)
-                    .addComponent(newFriendField)
-                    .addComponent(btSend, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap(33, Short.MAX_VALUE))
-        );
+        friendPanel.add(btSend);
+        btSend.setBounds(569, 579, 61, 40);
 
         javax.swing.GroupLayout homeScreenLayout = new javax.swing.GroupLayout(homeScreen);
         homeScreen.setLayout(homeScreenLayout);
         homeScreenLayout.setHorizontalGroup(
             homeScreenLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(friendPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-            .addComponent(headerPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addGroup(homeScreenLayout.createSequentialGroup()
+                .addComponent(headerPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
+            .addComponent(friendPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         homeScreenLayout.setVerticalGroup(
             homeScreenLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(homeScreenLayout.createSequentialGroup()
                 .addComponent(headerPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(friendPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(friendPanel, javax.swing.GroupLayout.DEFAULT_SIZE, 630, Short.MAX_VALUE))
         );
 
         registerPanel.setVisible(false);
@@ -995,20 +1025,19 @@ public class WatchEye extends JFrame {
         if (confirm == 0) {
             loginScreen.setVisible(true);
             loginScreen.setEnabled(true);
-            if(homeScreen.isVisible()){
-                homeScreen.setVisible(false);
-                homeScreen.setEnabled(false);
-                if(!loginPanel.isVisible()){
-                    loginPanel.setVisible(true);
-                    loginPanel.setEnabled(true);
-                }
-            }
+            homeScreen.setVisible(false);
+            homeScreen.setEnabled(false);
+            loginPanel.setVisible(true);
+            loginPanel.setEnabled(true);
+            newFriendField.setText(Constants.DEFAULT_NEW_FRIEND_TEXT);
         }
     }//GEN-LAST:event_btLogoffActionPerformed
 
     private void btBuddiesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btBuddiesActionPerformed
         friendPanel.setVisible(true);
         friendPanel.setEnabled(true);
+        listFriendRequest(LoginServer.getInstance().getCurrentUser());
+        listFriend(LoginServer.getInstance().getCurrentUser());
     }//GEN-LAST:event_btBuddiesActionPerformed
 
     private void newFriendFieldMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_newFriendFieldMouseClicked
@@ -1016,13 +1045,65 @@ public class WatchEye extends JFrame {
     }//GEN-LAST:event_newFriendFieldMouseClicked
 
     private void btSendActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btSendActionPerformed
-        new FriendRequestHandler(newFriendField.getText(), LoginServer.getInstance().getCurrentUser());
+        LoginServer.getInstance().addNewFriendRequest(newFriendField.getText(), LoginServer.getInstance().getCurrentUser());
     }//GEN-LAST:event_btSendActionPerformed
+
+    private void btAccept1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btAccept1ActionPerformed
+        LoginServer.getInstance().friendRequestResponse(0, true);
+    }//GEN-LAST:event_btAccept1ActionPerformed
+
+    private void btAccept2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btAccept2ActionPerformed
+        LoginServer.getInstance().friendRequestResponse(1, true);
+    }//GEN-LAST:event_btAccept2ActionPerformed
+
+    private void btAccept3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btAccept3ActionPerformed
+        LoginServer.getInstance().friendRequestResponse(2, true);
+    }//GEN-LAST:event_btAccept3ActionPerformed
+
+    private void btAccept4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btAccept4ActionPerformed
+        LoginServer.getInstance().friendRequestResponse(3, true);
+    }//GEN-LAST:event_btAccept4ActionPerformed
+
+    private void btAccept5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btAccept5ActionPerformed
+        LoginServer.getInstance().friendRequestResponse(4, true);
+    }//GEN-LAST:event_btAccept5ActionPerformed
+
+    private void btDecline1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btDecline1ActionPerformed
+        LoginServer.getInstance().friendRequestResponse(0, false);
+    }//GEN-LAST:event_btDecline1ActionPerformed
+
+    private void btDecline2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btDecline2ActionPerformed
+        LoginServer.getInstance().friendRequestResponse(1, false);
+    }//GEN-LAST:event_btDecline2ActionPerformed
+
+    private void btDecline3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btDecline3ActionPerformed
+        LoginServer.getInstance().friendRequestResponse(2, false);
+    }//GEN-LAST:event_btDecline3ActionPerformed
+
+    private void btDecline4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btDecline4ActionPerformed
+        LoginServer.getInstance().friendRequestResponse(3, false);
+    }//GEN-LAST:event_btDecline4ActionPerformed
+
+    private void btDecline5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btDecline5ActionPerformed
+        LoginServer.getInstance().friendRequestResponse(4, false);
+    }//GEN-LAST:event_btDecline5ActionPerformed
+
+    private void btReturnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btReturnActionPerformed
+        friendPanel.setVisible(false);
+        friendPanel.setEnabled(false);
+    }//GEN-LAST:event_btReturnActionPerformed
 
     public void welcome(User user){
         btProfile.setText(user.getName());
+        if(user.getFriendRequestList().size() > 0){
+            btBuddies.setText("Amigos (" + user.getFriendRequestList().size() + ")");
+        } else {
+            btBuddies.setText("Amigos");
+        }
         homeScreen.setVisible(true);
         homeScreen.setEnabled(true);
+        friendPanel.setVisible(false);
+        friendPanel.setEnabled(false);
         if(loginScreen.isVisible()){
             loginScreen.setVisible(false);
             loginScreen.setEnabled(false);
@@ -1033,6 +1114,286 @@ public class WatchEye extends JFrame {
             loginPanel.setVisible(false);
             loginPanel.setEnabled(false);
         }
+    }
+    
+    private void listFriendRequest(User toList){
+        if(toList.getFriendRequestList().size() < 5){
+            updateFriendRequestList(toList.getFriendRequestList().size());
+        }
+        int i = 0;
+        Iterator<User> it = toList.getFriendRequestList().iterator();
+        while(it.hasNext() && i < 5){
+            User requester = it.next();
+            switch(i){
+               case 0:
+                    frLabel1.setVisible(true);
+                    frLabel1.setIcon(new ImageIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/default_profile.png")).getImage().getScaledInstance(40, 40, Image.SCALE_SMOOTH)));
+                    frNameLabel1.setVisible(true);
+                    frNameLabel1.setText(requester.getName());
+                    btAccept1.setVisible(true);
+                    btAccept1.setEnabled(true);
+                    btDecline1.setVisible(true);
+                    btDecline1.setEnabled(true);
+                    break;
+                case 1:
+                    frLabel2.setVisible(true);
+                    frLabel2.setIcon(new ImageIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/default_profile.png")).getImage().getScaledInstance(40, 40, Image.SCALE_SMOOTH)));
+                    frNameLabel2.setVisible(true);
+                    frNameLabel2.setText(requester.getName());
+                    btAccept2.setVisible(true);
+                    btAccept2.setEnabled(true);
+                    btDecline2.setVisible(true);
+                    btDecline2.setEnabled(true);
+                    break;
+                case 2:
+                    frLabel3.setVisible(true);
+                    frLabel3.setIcon(new ImageIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/default_profile.png")).getImage().getScaledInstance(40, 40, Image.SCALE_SMOOTH)));
+                    frNameLabel3.setVisible(true);
+                    frNameLabel3.setText(requester.getName());
+                    btAccept3.setVisible(true);
+                    btAccept3.setEnabled(true);
+                    btDecline3.setVisible(true);
+                    btDecline3.setEnabled(true);
+                    break;
+                case 3:
+                    frLabel4.setVisible(true);
+                    frLabel4.setIcon(new ImageIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/default_profile.png")).getImage().getScaledInstance(40, 40, Image.SCALE_SMOOTH)));
+                    frNameLabel4.setVisible(true);
+                    frNameLabel4.setText(requester.getName());
+                    btAccept4.setVisible(true);
+                    btAccept4.setEnabled(true);
+                    btDecline4.setVisible(true);
+                    btDecline4.setEnabled(true);
+                    break;
+                case 4:
+                    frLabel5.setVisible(true);
+                    frLabel5.setIcon(new ImageIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/default_profile.png")).getImage().getScaledInstance(40, 40, Image.SCALE_SMOOTH)));
+                    frNameLabel5.setVisible(true);
+                    frNameLabel5.setText(requester.getName());
+                    btAccept5.setVisible(true);
+                    btAccept5.setEnabled(true);
+                    btDecline5.setVisible(true);
+                    btDecline5.setEnabled(true);
+                    break;
+            }
+            i++;
+        }
+    }
+    
+    private void updateFriendRequestList(int size){
+        switch(size){
+            case 0:
+                frLabel1.setVisible(false);
+                frNameLabel1.setVisible(false);
+                btAccept1.setVisible(false);
+                btAccept1.setEnabled(false);
+                btDecline1.setVisible(false);
+                btDecline1.setEnabled(false);
+            case 1:
+                frLabel2.setVisible(false);
+                frNameLabel2.setVisible(false);
+                btAccept2.setVisible(false);
+                btAccept2.setEnabled(false);
+                btDecline2.setVisible(false);
+                btDecline2.setEnabled(false);
+            case 2:
+                frLabel3.setVisible(false);
+                frNameLabel3.setVisible(false);
+                btAccept3.setVisible(false);
+                btAccept3.setEnabled(false);
+                btDecline3.setVisible(false);
+                btDecline3.setEnabled(false);
+            case 3:
+                frLabel4.setVisible(false);
+                frNameLabel4.setVisible(false);
+                btAccept4.setVisible(false);
+                btAccept4.setEnabled(false);
+                btDecline4.setVisible(false);
+                btDecline4.setEnabled(false);
+            case 4:
+                frLabel5.setVisible(false);
+                frNameLabel5.setVisible(false);
+                btAccept5.setVisible(false);
+                btAccept5.setEnabled(false);
+                btDecline5.setVisible(false);
+                btDecline5.setEnabled(false);
+                break;
+        }
+    }
+    
+    private void listFriend(User toList){
+        if(toList.getFriendList().size() < 10){
+            updateFriendList(toList.getFriendList().size());
+        }
+        int i = 0;
+        Iterator<User> it = toList.getFriendList().iterator();
+        while(it.hasNext() && i < 10){
+            User friend = it.next();
+            switch(i){
+               case 0:
+                    friendLabel1.setVisible(true);
+                    friendLabel1.setIcon(new ImageIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/default_profile.png")).getImage().getScaledInstance(40, 40, Image.SCALE_SMOOTH)));
+                    btFriend1.setVisible(true);
+                    btFriend1.setEnabled(true);
+                    btFriend1.setText(friend.getName());
+                    btFriendOption1.setVisible(true);
+                    btFriendOption1.setEnabled(true);
+                    break;
+                case 1:
+                    friendLabel2.setVisible(true);
+                    friendLabel2.setIcon(new ImageIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/default_profile.png")).getImage().getScaledInstance(40, 40, Image.SCALE_SMOOTH)));
+                    btFriend2.setVisible(true);
+                    btFriend2.setEnabled(true);
+                    btFriend2.setText(friend.getName());
+                    btFriendOption2.setVisible(true);
+                    btFriendOption2.setEnabled(true);
+                    break;
+                case 2:
+                    friendLabel3.setVisible(true);
+                    friendLabel3.setIcon(new ImageIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/default_profile.png")).getImage().getScaledInstance(40, 40, Image.SCALE_SMOOTH)));
+                    btFriend3.setVisible(true);
+                    btFriend3.setEnabled(true);
+                    btFriend3.setText(friend.getName());
+                    btFriendOption3.setVisible(true);
+                    btFriendOption3.setEnabled(true);
+                    break;
+                case 3:
+                    friendLabel4.setVisible(true);
+                    friendLabel4.setIcon(new ImageIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/default_profile.png")).getImage().getScaledInstance(40, 40, Image.SCALE_SMOOTH)));
+                    btFriend4.setVisible(true);
+                    btFriend4.setEnabled(true);
+                    btFriend4.setText(friend.getName());
+                    btFriendOption4.setVisible(true);
+                    btFriendOption4.setEnabled(true);
+                    break;
+                case 4:
+                    friendLabel5.setVisible(true);
+                    friendLabel5.setIcon(new ImageIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/default_profile.png")).getImage().getScaledInstance(40, 40, Image.SCALE_SMOOTH)));
+                    btFriend5.setVisible(true);
+                    btFriend5.setEnabled(true);
+                    btFriend5.setText(friend.getName());
+                    btFriendOption5.setVisible(true);
+                    btFriendOption5.setEnabled(true);
+                    break;
+                case 5:
+                    friendLabel6.setVisible(true);
+                    friendLabel6.setIcon(new ImageIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/default_profile.png")).getImage().getScaledInstance(40, 40, Image.SCALE_SMOOTH)));
+                    btFriend6.setVisible(true);
+                    btFriend6.setEnabled(true);
+                    btFriend6.setText(friend.getName());
+                    btFriendOption6.setVisible(true);
+                    btFriendOption6.setEnabled(true);
+                    break;
+                case 6:
+                    friendLabel7.setVisible(true);
+                    friendLabel7.setIcon(new ImageIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/default_profile.png")).getImage().getScaledInstance(40, 40, Image.SCALE_SMOOTH)));
+                    btFriend7.setVisible(true);
+                    btFriend7.setEnabled(true);
+                    btFriend7.setText(friend.getName());
+                    btFriendOption7.setVisible(true);
+                    btFriendOption7.setEnabled(true);
+                    break;
+                case 7:
+                    friendLabel8.setVisible(true);
+                    friendLabel8.setIcon(new ImageIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/default_profile.png")).getImage().getScaledInstance(40, 40, Image.SCALE_SMOOTH)));
+                    btFriend8.setVisible(true);
+                    btFriend8.setEnabled(true);
+                    btFriend8.setText(friend.getName());
+                    btFriendOption8.setVisible(true);
+                    btFriendOption8.setEnabled(true);
+                    break;
+                case 8:
+                    friendLabel9.setVisible(true);
+                    friendLabel9.setIcon(new ImageIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/default_profile.png")).getImage().getScaledInstance(40, 40, Image.SCALE_SMOOTH)));
+                    btFriend9.setVisible(true);
+                    btFriend9.setEnabled(true);
+                    btFriend9.setText(friend.getName());
+                    btFriendOption9.setVisible(true);
+                    btFriendOption9.setEnabled(true);
+                    break;
+                case 9:
+                    friendLabel10.setVisible(true);
+                    friendLabel10.setIcon(new ImageIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/default_profile.png")).getImage().getScaledInstance(40, 40, Image.SCALE_SMOOTH)));
+                    btFriend10.setVisible(true);
+                    btFriend10.setEnabled(true);
+                    btFriend10.setText(friend.getName());
+                    btFriendOption10.setVisible(true);
+                    btFriendOption10.setEnabled(true);
+                    break;
+            }
+            i++;
+        } 
+    }
+    
+    private void updateFriendList(int size){
+        switch(size){
+            case 0:
+                friendLabel1.setVisible(false);
+                btFriend1.setVisible(false);
+                btFriend1.setEnabled(false);
+                btFriendOption1.setVisible(false);
+                btFriendOption1.setEnabled(false);
+            case 1:
+                friendLabel2.setVisible(false);
+                btFriend2.setVisible(false);
+                btFriend2.setEnabled(false);
+                btFriendOption2.setVisible(false);
+                btFriendOption2.setEnabled(false);
+            case 2:
+                friendLabel3.setVisible(false);
+                btFriend3.setVisible(false);
+                btFriend3.setEnabled(false);
+                btFriendOption3.setVisible(false);
+                btFriendOption3.setEnabled(false);
+            case 3:
+                friendLabel4.setVisible(false);
+                btFriend4.setVisible(false);
+                btFriend4.setEnabled(false);
+                btFriendOption4.setVisible(false);
+                btFriendOption4.setEnabled(false);
+            case 4:
+                friendLabel5.setVisible(false);
+                btFriend5.setVisible(false);
+                btFriend5.setEnabled(false);
+                btFriendOption5.setVisible(false);
+                btFriendOption5.setEnabled(false);
+            case 5:
+                friendLabel6.setVisible(false);
+                btFriend6.setVisible(false);
+                btFriend6.setEnabled(false);
+                btFriendOption6.setVisible(false);
+                btFriendOption6.setEnabled(false);
+            case 6:
+                friendLabel7.setVisible(false);
+                btFriend7.setVisible(false);
+                btFriend7.setEnabled(false);
+                btFriendOption7.setVisible(false);
+                btFriendOption7.setEnabled(false);
+            case 7:
+                friendLabel8.setVisible(false);
+                btFriend8.setVisible(false);
+                btFriend8.setEnabled(false);
+                btFriendOption8.setVisible(false);
+                btFriendOption8.setEnabled(false);
+            case 8:
+                friendLabel9.setVisible(false);
+                btFriend9.setVisible(false);
+                btFriend9.setEnabled(false);
+                btFriendOption9.setVisible(false);
+                btFriendOption9.setEnabled(false);
+            case 9:
+                friendLabel10.setVisible(false);
+                btFriend10.setVisible(false);
+                btFriend10.setEnabled(false);
+                btFriendOption10.setVisible(false);
+                btFriendOption10.setEnabled(false);
+                break;
+        }
+    }
+    
+    public void updateAndListFriendPanel(User toList){
+        listFriend(toList);
+        listFriendRequest(toList);
     }
     
     /**
@@ -1131,6 +1492,7 @@ public class WatchEye extends JFrame {
     private javax.swing.JButton btRequestNext;
     private javax.swing.JButton btRequestPrev;
     private javax.swing.JButton btResetPassword;
+    private javax.swing.JButton btReturn;
     private javax.swing.JButton btSend;
     private javax.swing.JButton btUnblock1;
     private javax.swing.JButton btUnblock2;
@@ -1163,7 +1525,6 @@ public class WatchEye extends JFrame {
     private javax.swing.JLabel friendRequestListLabel;
     private javax.swing.JPanel headerPanel;
     private javax.swing.JPanel homeScreen;
-    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel loginFootnote;

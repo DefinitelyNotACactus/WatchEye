@@ -15,7 +15,7 @@ import java.util.ArrayList;
  *
  * @author David
  */
-public class User implements Serializable {
+public class User implements Serializable{
     
     //Creation Fields
     private String name;
@@ -37,6 +37,7 @@ public class User implements Serializable {
         this.gender = gender;
         this.dob = dob;
         buddies = new ArrayList<>();
+        buddies_request = new ArrayList<>();
         blocked = new ArrayList<>();
     }
     
@@ -60,6 +61,26 @@ public class User implements Serializable {
         if(buddies.contains(toRemove)){
             buddies.remove(toRemove);
         }
+    }
+    
+    public ArrayList<User> getFriendList(){
+        return buddies;
+    }
+    
+    public void addFriendRequest(User newRequest){
+        if(newRequest != null){
+            buddies_request.add(newRequest);
+        }
+    }
+    
+    public void removeFriendRequest(User toRemove){
+        if(buddies_request.contains(toRemove)){
+            buddies_request.remove(toRemove);
+        }
+    }
+    
+    public ArrayList<User> getFriendRequestList(){
+        return buddies_request;
     }
     
     public void blockUser(User toBlock){
