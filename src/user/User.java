@@ -26,6 +26,8 @@ public class User implements Serializable {
     
     //Array Fields
     private ArrayList<User> buddies;
+    private ArrayList<User> buddies_request;
+    
     private ArrayList<User> blocked;
     
     public User(String name, String email, String password, int gender, String dob){

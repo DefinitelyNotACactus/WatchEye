@@ -84,8 +84,8 @@ public class LoginServer implements Serializable {
                JOptionPane.showMessageDialog(client.getLoginScreen(), "Senha incorreta.", "Erro", JOptionPane.ERROR_MESSAGE);   
             }
         } else {
-                Toolkit.getDefaultToolkit().beep();
-                JOptionPane.showMessageDialog(client.getLoginScreen(), "E-mail não cadastrado.", "Erro", JOptionPane.ERROR_MESSAGE);  
+            Toolkit.getDefaultToolkit().beep();
+            JOptionPane.showMessageDialog(client.getLoginScreen(), "E-mail não cadastrado.", "Erro", JOptionPane.ERROR_MESSAGE);  
         }
     }
     

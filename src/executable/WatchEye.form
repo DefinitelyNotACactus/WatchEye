@@ -30,7 +30,10 @@
       <Group type="103" groupAlignment="0" attributes="0">
           <Component id="loginScreen" alignment="0" min="-2" pref="1280" max="-2" attributes="0"/>
           <Group type="103" rootIndex="1" groupAlignment="0" attributes="0">
-              <Component id="homeScreen" alignment="0" max="-2" attributes="0"/>
+              <Group type="102" alignment="0" attributes="0">
+                  <Component id="homeScreen" max="-2" attributes="0"/>
+                  <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+              </Group>
           </Group>
       </Group>
     </DimensionLayout>
@@ -38,7 +41,7 @@
       <Group type="103" groupAlignment="0" attributes="0">
           <Component id="loginScreen" alignment="0" min="-2" pref="720" max="-2" attributes="0"/>
           <Group type="103" rootIndex="1" groupAlignment="0" attributes="0">
-              <Component id="homeScreen" alignment="0" max="-2" attributes="0"/>
+              <Component id="homeScreen" alignment="0" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -57,14 +60,16 @@
       <Layout>
         <DimensionLayout dim="0">
           <Group type="103" groupAlignment="0" attributes="0">
-              <Component id="headerPanel" alignment="0" max="32767" attributes="0"/>
+              <Component id="headerPanel" max="32767" attributes="0"/>
+              <Component id="friendPanel" alignment="0" max="32767" attributes="0"/>
           </Group>
         </DimensionLayout>
         <DimensionLayout dim="1">
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" alignment="0" attributes="0">
                   <Component id="headerPanel" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace min="0" pref="637" max="32767" attributes="0"/>
+                  <EmptySpace max="-2" attributes="0"/>
+                  <Component id="friendPanel" max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -85,7 +90,7 @@
                       <Component id="profileIcon" min="-2" pref="40" max="-2" attributes="0"/>
                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
                       <Component id="btProfile" min="-2" pref="240" max="-2" attributes="0"/>
-                      <EmptySpace pref="479" max="32767" attributes="0"/>
+                      <EmptySpace max="32767" attributes="0"/>
                       <Component id="jLabel3" min="-2" pref="40" max="-2" attributes="0"/>
                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
                       <Component id="btBuddies" min="-2" pref="160" max="-2" attributes="0"/>
@@ -140,6 +145,9 @@
               <Properties>
                 <Property name="text" type="java.lang.String" value="Amigos"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btBuddiesActionPerformed"/>
+              </Events>
             </Component>
             <Component class="javax.swing.JLabel" name="jLabel3">
               <Properties>
@@ -154,6 +162,757 @@
             <Component class="javax.swing.JButton" name="btProfile">
               <Properties>
                 <Property name="text" type="java.lang.String" value="btPerfil"/>
+              </Properties>
+            </Component>
+          </SubComponents>
+        </Container>
+        <Container class="javax.swing.JPanel" name="friendPanel">
+          <AuxValues>
+            <AuxValue name="JavaCodeGenerator_InitCodePre" type="java.lang.String" value="friendPanel.setEnabled(false);&#xa;friendPanel.setVisible(false);"/>
+          </AuxValues>
+
+          <Layout>
+            <DimensionLayout dim="0">
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Group type="102" alignment="0" attributes="0">
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Group type="102" alignment="0" attributes="0">
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Component id="friendListLabel" min="-2" pref="620" max="-2" attributes="0"/>
+                                  <Group type="102" alignment="0" attributes="0">
+                                      <Group type="103" groupAlignment="0" attributes="0">
+                                          <Component id="friendLabel1" alignment="0" min="-2" pref="40" max="-2" attributes="0"/>
+                                          <Component id="friendLabel2" alignment="0" min="-2" pref="40" max="-2" attributes="0"/>
+                                      </Group>
+                                      <EmptySpace max="-2" attributes="0"/>
+                                      <Group type="103" groupAlignment="0" attributes="0">
+                                          <Group type="102" attributes="0">
+                                              <Component id="btFriend2" min="-2" pref="509" max="-2" attributes="0"/>
+                                              <EmptySpace max="-2" attributes="0"/>
+                                              <Component id="btFriendOption2" min="-2" pref="61" max="-2" attributes="0"/>
+                                          </Group>
+                                          <Group type="102" attributes="0">
+                                              <Component id="btFriend1" min="-2" pref="509" max="-2" attributes="0"/>
+                                              <EmptySpace max="-2" attributes="0"/>
+                                              <Component id="btFriendOption1" min="-2" pref="61" max="-2" attributes="0"/>
+                                          </Group>
+                                      </Group>
+                                  </Group>
+                              </Group>
+                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="1" attributes="0">
+                                  <Group type="102" attributes="0">
+                                      <Component id="btAccept1" min="-2" pref="152" max="-2" attributes="0"/>
+                                      <EmptySpace min="-2" pref="10" max="-2" attributes="0"/>
+                                      <Component id="btDecline1" min="-2" pref="148" max="-2" attributes="0"/>
+                                  </Group>
+                                  <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                      <Group type="102" attributes="0">
+                                          <Component id="frLabel1" min="-2" pref="40" max="-2" attributes="0"/>
+                                          <EmptySpace max="-2" attributes="0"/>
+                                          <Component id="frNameLabel1" min="-2" pref="264" max="-2" attributes="0"/>
+                                      </Group>
+                                      <Component id="friendRequestListLabel" min="-2" pref="310" max="-2" attributes="0"/>
+                                  </Group>
+                              </Group>
+                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Component id="blockedListLabel" max="32767" attributes="0"/>
+                                  <Group type="102" attributes="0">
+                                      <Group type="103" groupAlignment="0" attributes="0">
+                                          <Group type="102" attributes="0">
+                                              <Component id="blLabel1" min="-2" pref="40" max="-2" attributes="0"/>
+                                              <EmptySpace max="-2" attributes="0"/>
+                                              <Component id="blNameLabel1" min="-2" pref="264" max="-2" attributes="0"/>
+                                          </Group>
+                                          <Component id="btUnblock1" alignment="0" min="-2" pref="310" max="-2" attributes="0"/>
+                                      </Group>
+                                      <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                                  </Group>
+                              </Group>
+                          </Group>
+                          <Group type="102" attributes="0">
+                              <Component id="friendLabel6" min="-2" pref="40" max="-2" attributes="0"/>
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Component id="btFriend9" min="-2" pref="509" max="-2" attributes="0"/>
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Component id="btFriendOption6" min="-2" pref="61" max="-2" attributes="0"/>
+                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                              <Component id="btAccept3" min="-2" pref="152" max="-2" attributes="0"/>
+                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                              <Component id="btDecline3" min="-2" pref="148" max="-2" attributes="0"/>
+                              <EmptySpace max="32767" attributes="0"/>
+                              <Component id="btUnblock3" min="-2" pref="310" max="-2" attributes="0"/>
+                          </Group>
+                          <Group type="102" alignment="0" attributes="0">
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Group type="102" alignment="0" attributes="0">
+                                      <Component id="friendLabel3" min="-2" pref="40" max="-2" attributes="0"/>
+                                      <EmptySpace max="-2" attributes="0"/>
+                                      <Component id="btFriend3" min="-2" pref="509" max="-2" attributes="0"/>
+                                      <EmptySpace max="-2" attributes="0"/>
+                                      <Component id="btFriendOption3" min="-2" pref="61" max="-2" attributes="0"/>
+                                  </Group>
+                                  <Group type="102" alignment="0" attributes="0">
+                                      <Component id="friendLabel4" min="-2" pref="40" max="-2" attributes="0"/>
+                                      <EmptySpace max="-2" attributes="0"/>
+                                      <Component id="btFriend4" min="-2" pref="509" max="-2" attributes="0"/>
+                                      <EmptySpace max="-2" attributes="0"/>
+                                      <Component id="btFriendOption4" min="-2" pref="61" max="-2" attributes="0"/>
+                                  </Group>
+                                  <Group type="102" alignment="0" attributes="0">
+                                      <Component id="friendLabel5" min="-2" pref="40" max="-2" attributes="0"/>
+                                      <EmptySpace max="-2" attributes="0"/>
+                                      <Component id="btFriend10" min="-2" pref="509" max="-2" attributes="0"/>
+                                      <EmptySpace max="-2" attributes="0"/>
+                                      <Component id="btFriendOption5" min="-2" pref="61" max="-2" attributes="0"/>
+                                  </Group>
+                              </Group>
+                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Group type="102" attributes="0">
+                                      <Component id="btAccept2" min="-2" pref="152" max="-2" attributes="0"/>
+                                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                                      <Component id="btDecline2" min="-2" pref="148" max="-2" attributes="0"/>
+                                      <EmptySpace max="32767" attributes="0"/>
+                                      <Component id="btUnblock2" min="-2" pref="310" max="-2" attributes="0"/>
+                                  </Group>
+                                  <Group type="102" attributes="0">
+                                      <Group type="103" groupAlignment="0" attributes="0">
+                                          <Group type="102" attributes="0">
+                                              <Component id="frLabel3" min="-2" pref="40" max="-2" attributes="0"/>
+                                              <EmptySpace max="-2" attributes="0"/>
+                                              <Component id="frNameLabel3" min="-2" pref="264" max="-2" attributes="0"/>
+                                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                                              <Component id="blLabel3" min="-2" pref="40" max="-2" attributes="0"/>
+                                              <EmptySpace max="-2" attributes="0"/>
+                                              <Component id="blNameLabel3" min="-2" pref="264" max="-2" attributes="0"/>
+                                          </Group>
+                                          <Group type="102" alignment="0" attributes="0">
+                                              <Component id="frLabel2" min="-2" pref="40" max="-2" attributes="0"/>
+                                              <EmptySpace max="-2" attributes="0"/>
+                                              <Component id="frNameLabel2" min="-2" pref="264" max="-2" attributes="0"/>
+                                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                                              <Component id="blLabel2" min="-2" pref="40" max="-2" attributes="0"/>
+                                              <EmptySpace max="-2" attributes="0"/>
+                                              <Component id="blNameLabel2" min="-2" pref="264" max="-2" attributes="0"/>
+                                          </Group>
+                                      </Group>
+                                      <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                                  </Group>
+                              </Group>
+                          </Group>
+                          <Group type="102" alignment="0" attributes="0">
+                              <Component id="friendLabel9" min="-2" pref="40" max="-2" attributes="0"/>
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Component id="btFriend6" min="-2" pref="509" max="-2" attributes="0"/>
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Component id="btFriendOption8" min="-2" pref="61" max="-2" attributes="0"/>
+                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                              <Component id="btAccept4" min="-2" pref="152" max="-2" attributes="0"/>
+                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                              <Component id="btDecline4" min="-2" pref="148" max="-2" attributes="0"/>
+                              <EmptySpace max="32767" attributes="0"/>
+                              <Component id="btUnblock4" min="-2" pref="310" max="-2" attributes="0"/>
+                          </Group>
+                          <Group type="102" attributes="0">
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Group type="102" alignment="0" attributes="0">
+                                      <Component id="friendLabel7" min="-2" pref="40" max="-2" attributes="0"/>
+                                      <EmptySpace max="-2" attributes="0"/>
+                                      <Component id="btFriend5" min="-2" pref="509" max="-2" attributes="0"/>
+                                      <EmptySpace max="-2" attributes="0"/>
+                                      <Component id="btFriendOption9" min="-2" pref="61" max="-2" attributes="0"/>
+                                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                                      <Component id="frLabel5" min="-2" pref="40" max="-2" attributes="0"/>
+                                      <EmptySpace max="-2" attributes="0"/>
+                                      <Component id="frNameLabel5" min="-2" pref="264" max="-2" attributes="0"/>
+                                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                                      <Component id="blLabel5" min="-2" pref="40" max="-2" attributes="0"/>
+                                      <EmptySpace max="-2" attributes="0"/>
+                                      <Component id="blNameLabel5" min="-2" pref="264" max="-2" attributes="0"/>
+                                  </Group>
+                                  <Group type="102" alignment="0" attributes="0">
+                                      <Component id="friendLabel8" min="-2" pref="40" max="-2" attributes="0"/>
+                                      <EmptySpace max="-2" attributes="0"/>
+                                      <Component id="btFriend7" min="-2" pref="509" max="-2" attributes="0"/>
+                                      <EmptySpace max="-2" attributes="0"/>
+                                      <Component id="btFriendOption7" min="-2" pref="61" max="-2" attributes="0"/>
+                                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                                      <Component id="frLabel4" min="-2" pref="40" max="-2" attributes="0"/>
+                                      <EmptySpace max="-2" attributes="0"/>
+                                      <Component id="frNameLabel4" min="-2" pref="264" max="-2" attributes="0"/>
+                                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                                      <Component id="blLabel4" min="-2" pref="40" max="-2" attributes="0"/>
+                                      <EmptySpace max="-2" attributes="0"/>
+                                      <Component id="blNameLabel4" min="-2" pref="264" max="-2" attributes="0"/>
+                                  </Group>
+                              </Group>
+                              <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                          </Group>
+                          <Group type="102" alignment="0" attributes="0">
+                              <Component id="friendLabel10" min="-2" pref="40" max="-2" attributes="0"/>
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                  <Component id="newFriendField" max="32767" attributes="0"/>
+                                  <Group type="102" alignment="1" attributes="0">
+                                      <Component id="btFriendPrev" max="32767" attributes="0"/>
+                                      <EmptySpace max="-2" attributes="0"/>
+                                      <Component id="btFriendNext" min="-2" pref="251" max="-2" attributes="0"/>
+                                  </Group>
+                                  <Component id="btFriend8" alignment="0" pref="509" max="32767" attributes="0"/>
+                              </Group>
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                  <Component id="btSend" pref="0" max="32767" attributes="0"/>
+                                  <Component id="btFriendOption10" min="-2" pref="61" max="-2" attributes="0"/>
+                              </Group>
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Group type="102" alignment="0" attributes="0">
+                                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                                      <Group type="103" groupAlignment="0" attributes="0">
+                                          <Group type="102" attributes="0">
+                                              <Component id="btAccept5" min="-2" pref="152" max="-2" attributes="0"/>
+                                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                                              <Component id="btDecline5" min="-2" pref="148" max="-2" attributes="0"/>
+                                              <EmptySpace max="32767" attributes="0"/>
+                                              <Component id="btUnblock5" min="-2" pref="310" max="-2" attributes="0"/>
+                                          </Group>
+                                          <Group type="102" attributes="0">
+                                              <Component id="btRequestPrev" min="-2" pref="152" max="-2" attributes="0"/>
+                                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                                              <Component id="btRequestNext" min="-2" pref="148" max="-2" attributes="0"/>
+                                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                                              <Component id="btBlockPrev" min="-2" pref="152" max="-2" attributes="0"/>
+                                              <EmptySpace max="32767" attributes="0"/>
+                                              <Component id="btBlockNext" min="-2" pref="148" max="-2" attributes="0"/>
+                                          </Group>
+                                      </Group>
+                                  </Group>
+                                  <Group type="102" alignment="1" attributes="0">
+                                      <EmptySpace min="-2" pref="492" max="-2" attributes="0"/>
+                                      <Component id="jButton1" min="-2" pref="148" max="-2" attributes="0"/>
+                                  </Group>
+                              </Group>
+                          </Group>
+                      </Group>
+                      <EmptySpace max="-2" attributes="0"/>
+                  </Group>
+              </Group>
+            </DimensionLayout>
+            <DimensionLayout dim="1">
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Group type="102" alignment="0" attributes="0">
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                          <Component id="blockedListLabel" pref="44" max="32767" attributes="0"/>
+                          <Component id="friendRequestListLabel" max="32767" attributes="0"/>
+                          <Component id="friendListLabel" max="32767" attributes="0"/>
+                      </Group>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                          <Group type="103" groupAlignment="3" attributes="0">
+                              <Component id="friendLabel1" alignment="3" min="-2" pref="40" max="-2" attributes="0"/>
+                              <Component id="btFriend1" alignment="3" min="-2" pref="40" max="-2" attributes="0"/>
+                          </Group>
+                          <Component id="btFriendOption1" alignment="0" max="32767" attributes="0"/>
+                          <Component id="frNameLabel1" alignment="0" min="-2" pref="40" max="-2" attributes="0"/>
+                          <Component id="frLabel1" alignment="0" min="-2" pref="40" max="-2" attributes="0"/>
+                          <Component id="blNameLabel1" alignment="0" min="-2" pref="40" max="-2" attributes="0"/>
+                          <Component id="blLabel1" alignment="0" min="-2" pref="40" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Component id="btAccept1" min="-2" pref="40" max="-2" attributes="0"/>
+                          <Component id="btUnblock1" min="-2" pref="40" max="-2" attributes="0"/>
+                          <Component id="btDecline1" alignment="0" min="-2" pref="40" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="3" attributes="0">
+                              <Component id="friendLabel2" alignment="3" min="-2" pref="40" max="-2" attributes="0"/>
+                              <Component id="btFriend2" alignment="3" min="-2" pref="40" max="-2" attributes="0"/>
+                              <Component id="btFriendOption2" alignment="3" min="-2" pref="40" max="-2" attributes="0"/>
+                          </Group>
+                      </Group>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="friendLabel3" alignment="3" min="-2" pref="40" max="-2" attributes="0"/>
+                          <Component id="btFriend3" alignment="3" min="-2" pref="40" max="-2" attributes="0"/>
+                          <Component id="btFriendOption3" alignment="3" min="-2" pref="40" max="-2" attributes="0"/>
+                          <Component id="frLabel2" alignment="3" min="-2" pref="40" max="-2" attributes="0"/>
+                          <Component id="frNameLabel2" alignment="3" min="-2" pref="40" max="-2" attributes="0"/>
+                          <Component id="blLabel2" alignment="3" min="-2" pref="40" max="-2" attributes="0"/>
+                          <Component id="blNameLabel2" alignment="3" min="-2" pref="40" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="friendLabel4" alignment="3" min="-2" pref="40" max="-2" attributes="0"/>
+                          <Component id="btFriend4" alignment="3" min="-2" pref="40" max="-2" attributes="0"/>
+                          <Component id="btFriendOption4" alignment="3" min="-2" pref="40" max="-2" attributes="0"/>
+                          <Component id="btAccept2" alignment="3" min="-2" pref="40" max="-2" attributes="0"/>
+                          <Component id="btDecline2" alignment="3" min="-2" pref="40" max="-2" attributes="0"/>
+                          <Component id="btUnblock2" alignment="3" min="-2" pref="40" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="friendLabel5" alignment="3" min="-2" pref="40" max="-2" attributes="0"/>
+                          <Component id="btFriend10" alignment="3" min="-2" pref="40" max="-2" attributes="0"/>
+                          <Component id="btFriendOption5" alignment="3" min="-2" pref="40" max="-2" attributes="0"/>
+                          <Component id="frLabel3" alignment="3" min="-2" pref="40" max="-2" attributes="0"/>
+                          <Component id="frNameLabel3" alignment="3" min="-2" pref="40" max="-2" attributes="0"/>
+                          <Component id="blLabel3" alignment="3" min="-2" pref="40" max="-2" attributes="0"/>
+                          <Component id="blNameLabel3" alignment="3" min="-2" pref="40" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="friendLabel6" alignment="3" min="-2" pref="40" max="-2" attributes="0"/>
+                          <Component id="btFriend9" alignment="3" min="-2" pref="40" max="-2" attributes="0"/>
+                          <Component id="btFriendOption6" alignment="3" min="-2" pref="40" max="-2" attributes="0"/>
+                          <Component id="btAccept3" alignment="3" min="-2" pref="40" max="-2" attributes="0"/>
+                          <Component id="btDecline3" alignment="3" min="-2" pref="40" max="-2" attributes="0"/>
+                          <Component id="btUnblock3" alignment="3" min="-2" pref="40" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="friendLabel8" alignment="3" min="-2" pref="40" max="-2" attributes="0"/>
+                          <Component id="btFriend7" alignment="3" min="-2" pref="40" max="-2" attributes="0"/>
+                          <Component id="btFriendOption7" alignment="3" min="-2" pref="40" max="-2" attributes="0"/>
+                          <Component id="frLabel4" alignment="3" min="-2" pref="40" max="-2" attributes="0"/>
+                          <Component id="frNameLabel4" alignment="3" min="-2" pref="40" max="-2" attributes="0"/>
+                          <Component id="blLabel4" alignment="3" min="-2" pref="40" max="-2" attributes="0"/>
+                          <Component id="blNameLabel4" alignment="3" min="-2" pref="40" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="friendLabel9" alignment="3" min="-2" pref="40" max="-2" attributes="0"/>
+                          <Component id="btFriend6" alignment="3" min="-2" pref="40" max="-2" attributes="0"/>
+                          <Component id="btFriendOption8" alignment="3" min="-2" pref="40" max="-2" attributes="0"/>
+                          <Component id="btAccept4" alignment="3" min="-2" pref="40" max="-2" attributes="0"/>
+                          <Component id="btDecline4" alignment="3" min="-2" pref="40" max="-2" attributes="0"/>
+                          <Component id="btUnblock4" alignment="3" min="-2" pref="40" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="friendLabel7" alignment="3" min="-2" pref="40" max="-2" attributes="0"/>
+                          <Component id="btFriend5" alignment="3" min="-2" pref="40" max="-2" attributes="0"/>
+                          <Component id="btFriendOption9" alignment="3" min="-2" pref="40" max="-2" attributes="0"/>
+                          <Component id="frLabel5" alignment="3" min="-2" pref="40" max="-2" attributes="0"/>
+                          <Component id="frNameLabel5" alignment="3" min="-2" pref="40" max="-2" attributes="0"/>
+                          <Component id="blLabel5" alignment="3" min="-2" pref="40" max="-2" attributes="0"/>
+                          <Component id="blNameLabel5" alignment="3" min="-2" pref="40" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="friendLabel10" alignment="3" min="-2" pref="40" max="-2" attributes="0"/>
+                          <Component id="btFriend8" alignment="3" min="-2" pref="40" max="-2" attributes="0"/>
+                          <Component id="btFriendOption10" alignment="3" min="-2" pref="40" max="-2" attributes="0"/>
+                          <Component id="btAccept5" alignment="3" min="-2" pref="40" max="-2" attributes="0"/>
+                          <Component id="btDecline5" alignment="3" min="-2" pref="40" max="-2" attributes="0"/>
+                          <Component id="btUnblock5" alignment="3" min="-2" pref="40" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="btFriendPrev" alignment="3" min="-2" pref="40" max="-2" attributes="0"/>
+                          <Component id="btFriendNext" alignment="3" min="-2" pref="40" max="-2" attributes="0"/>
+                          <Component id="btRequestPrev" alignment="3" min="-2" pref="40" max="-2" attributes="0"/>
+                          <Component id="btRequestNext" alignment="3" min="-2" pref="40" max="-2" attributes="0"/>
+                          <Component id="btBlockPrev" alignment="3" min="-2" pref="40" max="-2" attributes="0"/>
+                          <Component id="btBlockNext" alignment="3" min="-2" pref="40" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                          <Component id="jButton1" pref="40" max="32767" attributes="0"/>
+                          <Component id="newFriendField" max="32767" attributes="0"/>
+                          <Component id="btSend" max="32767" attributes="0"/>
+                      </Group>
+                      <EmptySpace pref="33" max="32767" attributes="0"/>
+                  </Group>
+              </Group>
+            </DimensionLayout>
+          </Layout>
+          <SubComponents>
+            <Component class="javax.swing.JLabel" name="friendLabel1">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="friendLabel1"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JButton" name="btFriend1">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="btFriend1"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JLabel" name="friendListLabel">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Amigos"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JLabel" name="friendRequestListLabel">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Pedidos de Amizade"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JLabel" name="blockedListLabel">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Bloqueado"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JButton" name="btFriendOption1">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="btOption1"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JLabel" name="frLabel1">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="friendIcon1"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JLabel" name="frNameLabel1">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="friendName1"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JButton" name="btAccept1">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="btAccept1"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JButton" name="btDecline1">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="btDecline1"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JLabel" name="blLabel1">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="blockedIcon1"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JLabel" name="blNameLabel1">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="blockedName1"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JButton" name="btUnblock1">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="btUnblock1"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JLabel" name="friendLabel2">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="friendLabel1"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JButton" name="btFriend2">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="btFriend1"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JButton" name="btFriendOption2">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="btOption1"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JLabel" name="friendLabel3">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="friendLabel1"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JButton" name="btFriend3">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="btFriend1"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JButton" name="btFriendOption3">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="btOption1"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JLabel" name="friendLabel4">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="friendLabel1"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JButton" name="btFriend4">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="btFriend1"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JButton" name="btFriendOption4">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="btOption1"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JLabel" name="friendLabel5">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="friendLabel1"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JButton" name="btFriend5">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="btFriend1"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JButton" name="btFriendOption5">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="btOption1"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JLabel" name="friendLabel6">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="friendLabel1"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JButton" name="btFriend6">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="btFriend1"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JButton" name="btFriendOption6">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="btOption1"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JLabel" name="friendLabel7">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="friendLabel1"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JButton" name="btFriend7">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="btFriend1"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JButton" name="btFriendOption7">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="btOption1"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JLabel" name="friendLabel8">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="friendLabel1"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JButton" name="btFriend8">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="btFriend1"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JButton" name="btFriendOption8">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="btOption1"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JLabel" name="friendLabel9">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="friendLabel1"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JButton" name="btFriend9">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="btFriend1"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JButton" name="btFriendOption9">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="btOption1"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JLabel" name="friendLabel10">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="friendLabel1"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JButton" name="btFriend10">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="btFriend1"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JButton" name="btFriendOption10">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="btOption1"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JLabel" name="frLabel2">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="friendIcon1"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JLabel" name="frNameLabel2">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="friendName1"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JButton" name="btAccept2">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="btAccept1"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JButton" name="btDecline2">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="btDecline1"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JLabel" name="frLabel3">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="friendIcon1"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JLabel" name="frNameLabel3">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="friendName1"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JButton" name="btAccept3">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="btAccept1"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JButton" name="btDecline3">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="btDecline1"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JLabel" name="frLabel4">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="friendIcon1"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JLabel" name="frNameLabel4">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="friendName1"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JButton" name="btAccept4">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="btAccept1"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JButton" name="btDecline4">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="btDecline1"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JLabel" name="frLabel5">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="friendIcon1"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JLabel" name="frNameLabel5">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="friendName1"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JButton" name="btAccept5">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="btAccept1"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JButton" name="btDecline5">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="btDecline1"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JLabel" name="blLabel2">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="blockedIcon1"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JLabel" name="blNameLabel2">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="blockedName1"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JButton" name="btUnblock2">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="btUnblock1"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JLabel" name="blLabel3">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="blockedIcon1"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JLabel" name="blNameLabel3">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="blockedName1"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JButton" name="btUnblock3">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="btUnblock1"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JLabel" name="blLabel4">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="blockedIcon1"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JLabel" name="blNameLabel4">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="blockedName1"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JButton" name="btUnblock4">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="btUnblock1"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JLabel" name="blLabel5">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="blockedIcon1"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JLabel" name="blNameLabel5">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="blockedName1"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JButton" name="btUnblock5">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="btUnblock1"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JButton" name="btFriendPrev">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="jButton1"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JButton" name="btFriendNext">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="jButton2"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JButton" name="btRequestPrev">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="btAccept1"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JButton" name="btRequestNext">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="btDecline1"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JButton" name="btBlockPrev">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="btAccept1"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JButton" name="btBlockNext">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="btDecline1"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JButton" name="jButton1">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="jButton1"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JTextField" name="newFriendField">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Pesquisar amigo para adicionar..."/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JButton" name="btSend">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="btSend"/>
               </Properties>
             </Component>
           </SubComponents>
