@@ -1133,10 +1133,14 @@ public class WatchEye extends JFrame {
         } else if(LoginServer.getInstance().getCurrentUser().isFriend(newFriendField.getText())){
             Toolkit.getDefaultToolkit().beep();
             JOptionPane.showMessageDialog(this, "O usuário já é seu amigo(a)!", "Erro", JOptionPane.ERROR_MESSAGE);
-        } else { 
+        } else if(LoginServer.getInstance().getCurrentUser().isDuplicateRequest(newFriendField.getText())){
+            Toolkit.getDefaultToolkit().beep();
+            JOptionPane.showMessageDialog(this, "Você possui um pedido pendente com este usuário!", "Erro", JOptionPane.ERROR_MESSAGE);
+        } else {
             LoginServer.getInstance().addNewFriendRequest(newFriendField.getText(), LoginServer.getInstance().getCurrentUser());
             JOptionPane.showMessageDialog(this, "Pedido Enviado!", "Pedido de Amizade", JOptionPane.INFORMATION_MESSAGE);
         }
+        newFriendField.setText(Constants.DEFAULT_NEW_FRIEND_TEXT);
     }//GEN-LAST:event_btSendActionPerformed
 
     private void btAccept1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btAccept1ActionPerformed
