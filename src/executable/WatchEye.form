@@ -75,7 +75,7 @@
               <Group type="102" alignment="0" attributes="0">
                   <Component id="headerPanel" min="-2" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
-                  <Component id="friendPanel" pref="630" max="32767" attributes="0"/>
+                  <Component id="friendPanel" pref="652" max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -246,6 +246,9 @@
               <Properties>
                 <Property name="text" type="java.lang.String" value="btOption1"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btFriendOption1ActionPerformed"/>
+              </Events>
               <AuxValues>
                 <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="btFriendOption1.setVisible(false);&#xa;btFriendOption1.setEnabled(false);"/>
               </AuxValues>
@@ -343,6 +346,9 @@
               <Properties>
                 <Property name="text" type="java.lang.String" value="Desbloquear"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btUnblock1ActionPerformed"/>
+              </Events>
               <AuxValues>
                 <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="btUnblock1.setEnabled(false);&#xa;btUnblock1.setVisible(false);"/>
               </AuxValues>
@@ -382,6 +388,9 @@
               <Properties>
                 <Property name="text" type="java.lang.String" value="btOption1"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btFriendOption2ActionPerformed"/>
+              </Events>
               <AuxValues>
                 <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="btFriendOption2.setVisible(false);&#xa;btFriendOption2.setEnabled(false);"/>
               </AuxValues>
@@ -421,6 +430,9 @@
               <Properties>
                 <Property name="text" type="java.lang.String" value="btOption1"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btFriendOption3ActionPerformed"/>
+              </Events>
               <AuxValues>
                 <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="btFriendOption3.setVisible(false);&#xa;btFriendOption3.setEnabled(false);"/>
               </AuxValues>
@@ -460,6 +472,9 @@
               <Properties>
                 <Property name="text" type="java.lang.String" value="btOption1"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btFriendOption4ActionPerformed"/>
+              </Events>
               <AuxValues>
                 <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="btFriendOption4.setVisible(false);&#xa;btFriendOption4.setEnabled(false);"/>
               </AuxValues>
@@ -499,6 +514,9 @@
               <Properties>
                 <Property name="text" type="java.lang.String" value="btOption1"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btFriendOption5ActionPerformed"/>
+              </Events>
               <AuxValues>
                 <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="btFriendOption5.setVisible(false);&#xa;btFriendOption5.setEnabled(false);"/>
               </AuxValues>
@@ -538,6 +556,9 @@
               <Properties>
                 <Property name="text" type="java.lang.String" value="btOption1"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btFriendOption6ActionPerformed"/>
+              </Events>
               <AuxValues>
                 <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="btFriendOption6.setVisible(false);&#xa;btFriendOption6.setEnabled(false);"/>
               </AuxValues>
@@ -577,6 +598,9 @@
               <Properties>
                 <Property name="text" type="java.lang.String" value="btOption1"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btFriendOption7ActionPerformed"/>
+              </Events>
               <AuxValues>
                 <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="btFriendOption7.setVisible(false);&#xa;btFriendOption7.setEnabled(false);"/>
               </AuxValues>
@@ -603,6 +627,9 @@
               <Properties>
                 <Property name="text" type="java.lang.String" value="btOption1"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btFriendOption8ActionPerformed"/>
+              </Events>
               <AuxValues>
                 <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="btFriendOption8.setVisible(false);&#xa;btFriendOption8.setEnabled(false);"/>
               </AuxValues>
@@ -655,6 +682,9 @@
               <Properties>
                 <Property name="text" type="java.lang.String" value="btOption1"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btFriendOption9ActionPerformed"/>
+              </Events>
               <AuxValues>
                 <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="btFriendOption9.setVisible(false);&#xa;btFriendOption9.setEnabled(false);"/>
               </AuxValues>
@@ -694,6 +724,9 @@
               <Properties>
                 <Property name="text" type="java.lang.String" value="btOption1"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btFriendOption10ActionPerformed"/>
+              </Events>
               <AuxValues>
                 <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="btFriendOption10.setVisible(false);&#xa;btFriendOption10.setEnabled(false);"/>
               </AuxValues>
@@ -965,6 +998,9 @@
               <Properties>
                 <Property name="text" type="java.lang.String" value="Desbloquear"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btUnblock2ActionPerformed"/>
+              </Events>
               <AuxValues>
                 <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="btUnblock2.setEnabled(false);&#xa;btUnblock2.setVisible(false);"/>
               </AuxValues>
@@ -1004,6 +1040,9 @@
               <Properties>
                 <Property name="text" type="java.lang.String" value="Desbloquear"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btUnblock3ActionPerformed"/>
+              </Events>
               <AuxValues>
                 <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="btUnblock3.setEnabled(false);&#xa;btUnblock3.setVisible(false);"/>
               </AuxValues>
@@ -1043,6 +1082,9 @@
               <Properties>
                 <Property name="text" type="java.lang.String" value="Desbloquear"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btUnblock4ActionPerformed"/>
+              </Events>
               <AuxValues>
                 <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="btUnblock4.setEnabled(false);&#xa;btUnblock4.setVisible(false);"/>
               </AuxValues>
@@ -1082,6 +1124,9 @@
               <Properties>
                 <Property name="text" type="java.lang.String" value="Desbloquear"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btUnblock5ActionPerformed"/>
+              </Events>
               <AuxValues>
                 <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="btUnblock5.setEnabled(false);&#xa;btUnblock5.setVisible(false);"/>
               </AuxValues>

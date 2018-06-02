@@ -10,13 +10,16 @@ import java.io.IOException;
 import java.io.ObjectOutputStream;
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.Iterator;
 
 /**
  *
  * @author David
  */
 public class User implements Serializable{
-    
+
+    private static final long serialVersionUID = 147788L;
+
     //Creation Fields
     private String name;
     private String email;
@@ -41,13 +44,14 @@ public class User implements Serializable{
         blocked = new ArrayList<>();
     }
     
-    public void serialize(User user){
+    public void serialize(){
         try {
-            FileOutputStream fileOut = new FileOutputStream("data/users/" + email + ".ser");
-            ObjectOutputStream out = new ObjectOutputStream(fileOut);
-            out.writeObject(user);
-            out.close();
-            fileOut.close();
+            ObjectOutputStream out;
+            try (FileOutputStream fileOut = new FileOutputStream("data/users/" + email + ".ser")) {
+                out = new ObjectOutputStream(fileOut);
+                out.writeObject(this);
+                out.close();
+            }
             out.close();
         } catch (IOException i) {
         }
@@ -58,8 +62,13 @@ public class User implements Serializable{
     }
     
     public void removeFriend(User toRemove){
-        if(buddies.contains(toRemove)){
-            buddies.remove(toRemove);
+        Iterator<User> it = buddies.iterator();
+        while(it.hasNext()){
+            User currentFriend = it.next();
+            if(toRemove.getMail().equals(currentFriend.getMail())){
+                it.remove();
+                break;
+            }
         }
     }
     
@@ -67,20 +76,58 @@ public class User implements Serializable{
         return buddies;
     }
     
+    public boolean isFriend(String mailToSearch){
+        Iterator<User> it = buddies.iterator();
+        while(it.hasNext()){
+            User currentBuddy = it.next();
+            if(mailToSearch.equals(currentBuddy.getMail())){
+                return true;
+            }
+        }
+        return false;
+    }
+    
     public void addFriendRequest(User newRequest){
-        if(newRequest != null){
+        if(newRequest != null && !isFriend(newRequest.getMail()) && !isDuplicateRequest(newRequest.getMail())){
             buddies_request.add(newRequest);
         }
     }
     
     public void removeFriendRequest(User toRemove){
-        if(buddies_request.contains(toRemove)){
-            buddies_request.remove(toRemove);
+        Iterator<User> it = buddies_request.iterator();
+        while(it.hasNext()){
+            User currentRequest = it.next();
+            if(toRemove.getMail().equals(currentRequest.getMail())){
+                it.remove();
+                break;
+            }
         }
+    }
+    
+    public boolean isDuplicateRequest(String email){
+        Iterator<User> it = buddies_request.iterator();
+        while(it.hasNext()){
+            User currentRequest = it.next();
+            if(email.equals(currentRequest.getMail())){
+                return true;
+            }
+        }
+        return false;
     }
     
     public ArrayList<User> getFriendRequestList(){
         return buddies_request;
+    }
+    
+    public boolean isBlocked(String mailToSearch){
+        Iterator<User> it = blocked.iterator();
+        while(it.hasNext()){
+            User currentBlocked = it.next();
+            if(mailToSearch.equals(currentBlocked.getMail())){
+                return true;
+            }
+        }
+        return false;
     }
     
     public void blockUser(User toBlock){
@@ -88,9 +135,18 @@ public class User implements Serializable{
     }
     
     public void unblockUser(User toUnblock){
-        if(blocked.contains(toUnblock)){
-            blocked.remove(toUnblock);
+        Iterator<User> it = blocked.iterator();
+        while(it.hasNext()){
+            User currentBlocked = it.next();
+            if(toUnblock.getMail().equals(currentBlocked.getMail())){
+                it.remove();
+                break;
+            }
         }
+    }
+    
+    public ArrayList<User> getBlockedList(){
+        return blocked;
     }
     
     public String getName(){

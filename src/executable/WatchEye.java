@@ -7,14 +7,15 @@ package executable;
 
 import java.awt.Image;
 import java.awt.Toolkit;
+import java.util.HashMap;
 import java.util.Iterator;
+import java.util.Map;
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import server.LoginServer;
 import user.User;
-import util.Serializator;
 import util.Validator;
 
 /**
@@ -263,6 +264,11 @@ public class WatchEye extends JFrame {
         btFriendOption1.setText("btOption1");
         btFriendOption1.setVisible(false);
         btFriendOption1.setEnabled(false);
+        btFriendOption1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btFriendOption1ActionPerformed(evt);
+            }
+        });
         friendPanel.add(btFriendOption1);
         btFriendOption1.setBounds(569, 61, 61, 40);
 
@@ -311,6 +317,11 @@ public class WatchEye extends JFrame {
         btUnblock1.setText("Desbloquear");
         btUnblock1.setEnabled(false);
         btUnblock1.setVisible(false);
+        btUnblock1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btUnblock1ActionPerformed(evt);
+            }
+        });
         friendPanel.add(btUnblock1);
         btUnblock1.setBounds(960, 107, 310, 40);
 
@@ -328,6 +339,11 @@ public class WatchEye extends JFrame {
         btFriendOption2.setText("btOption1");
         btFriendOption2.setVisible(false);
         btFriendOption2.setEnabled(false);
+        btFriendOption2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btFriendOption2ActionPerformed(evt);
+            }
+        });
         friendPanel.add(btFriendOption2);
         btFriendOption2.setBounds(569, 107, 61, 40);
 
@@ -345,6 +361,11 @@ public class WatchEye extends JFrame {
         btFriendOption3.setText("btOption1");
         btFriendOption3.setVisible(false);
         btFriendOption3.setEnabled(false);
+        btFriendOption3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btFriendOption3ActionPerformed(evt);
+            }
+        });
         friendPanel.add(btFriendOption3);
         btFriendOption3.setBounds(569, 153, 61, 40);
 
@@ -362,6 +383,11 @@ public class WatchEye extends JFrame {
         btFriendOption4.setText("btOption1");
         btFriendOption4.setVisible(false);
         btFriendOption4.setEnabled(false);
+        btFriendOption4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btFriendOption4ActionPerformed(evt);
+            }
+        });
         friendPanel.add(btFriendOption4);
         btFriendOption4.setBounds(569, 199, 61, 40);
 
@@ -379,6 +405,11 @@ public class WatchEye extends JFrame {
         btFriendOption5.setText("btOption1");
         btFriendOption5.setVisible(false);
         btFriendOption5.setEnabled(false);
+        btFriendOption5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btFriendOption5ActionPerformed(evt);
+            }
+        });
         friendPanel.add(btFriendOption5);
         btFriendOption5.setBounds(569, 245, 61, 40);
 
@@ -396,6 +427,11 @@ public class WatchEye extends JFrame {
         btFriendOption6.setText("btOption1");
         btFriendOption6.setVisible(false);
         btFriendOption6.setEnabled(false);
+        btFriendOption6.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btFriendOption6ActionPerformed(evt);
+            }
+        });
         friendPanel.add(btFriendOption6);
         btFriendOption6.setBounds(569, 291, 61, 40);
 
@@ -413,6 +449,11 @@ public class WatchEye extends JFrame {
         btFriendOption7.setText("btOption1");
         btFriendOption7.setVisible(false);
         btFriendOption7.setEnabled(false);
+        btFriendOption7.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btFriendOption7ActionPerformed(evt);
+            }
+        });
         friendPanel.add(btFriendOption7);
         btFriendOption7.setBounds(569, 337, 61, 40);
 
@@ -424,6 +465,11 @@ public class WatchEye extends JFrame {
         btFriendOption8.setText("btOption1");
         btFriendOption8.setVisible(false);
         btFriendOption8.setEnabled(false);
+        btFriendOption8.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btFriendOption8ActionPerformed(evt);
+            }
+        });
         friendPanel.add(btFriendOption8);
         btFriendOption8.setBounds(569, 383, 61, 40);
 
@@ -447,6 +493,11 @@ public class WatchEye extends JFrame {
         btFriendOption9.setText("btOption1");
         btFriendOption9.setVisible(false);
         btFriendOption9.setEnabled(false);
+        btFriendOption9.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btFriendOption9ActionPerformed(evt);
+            }
+        });
         friendPanel.add(btFriendOption9);
         btFriendOption9.setBounds(569, 429, 61, 40);
 
@@ -464,6 +515,11 @@ public class WatchEye extends JFrame {
         btFriendOption10.setText("btOption1");
         btFriendOption10.setVisible(false);
         btFriendOption10.setEnabled(false);
+        btFriendOption10.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btFriendOption10ActionPerformed(evt);
+            }
+        });
         friendPanel.add(btFriendOption10);
         btFriendOption10.setBounds(569, 475, 61, 40);
 
@@ -608,6 +664,11 @@ public class WatchEye extends JFrame {
         btUnblock2.setText("Desbloquear");
         btUnblock2.setEnabled(false);
         btUnblock2.setVisible(false);
+        btUnblock2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btUnblock2ActionPerformed(evt);
+            }
+        });
         friendPanel.add(btUnblock2);
         btUnblock2.setBounds(960, 199, 310, 40);
 
@@ -624,6 +685,11 @@ public class WatchEye extends JFrame {
         btUnblock3.setText("Desbloquear");
         btUnblock3.setEnabled(false);
         btUnblock3.setVisible(false);
+        btUnblock3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btUnblock3ActionPerformed(evt);
+            }
+        });
         friendPanel.add(btUnblock3);
         btUnblock3.setBounds(960, 291, 310, 40);
 
@@ -640,6 +706,11 @@ public class WatchEye extends JFrame {
         btUnblock4.setText("Desbloquear");
         btUnblock4.setEnabled(false);
         btUnblock4.setVisible(false);
+        btUnblock4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btUnblock4ActionPerformed(evt);
+            }
+        });
         friendPanel.add(btUnblock4);
         btUnblock4.setBounds(960, 383, 310, 40);
 
@@ -656,6 +727,11 @@ public class WatchEye extends JFrame {
         btUnblock5.setText("Desbloquear");
         btUnblock5.setEnabled(false);
         btUnblock5.setVisible(false);
+        btUnblock5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btUnblock5ActionPerformed(evt);
+            }
+        });
         friendPanel.add(btUnblock5);
         btUnblock5.setBounds(960, 475, 310, 40);
 
@@ -736,7 +812,7 @@ public class WatchEye extends JFrame {
             .addGroup(homeScreenLayout.createSequentialGroup()
                 .addComponent(headerPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(friendPanel, javax.swing.GroupLayout.DEFAULT_SIZE, 630, Short.MAX_VALUE))
+                .addComponent(friendPanel, javax.swing.GroupLayout.DEFAULT_SIZE, 652, Short.MAX_VALUE))
         );
 
         registerPanel.setVisible(false);
@@ -1000,7 +1076,7 @@ public class WatchEye extends JFrame {
             JOptionPane.showMessageDialog(loginScreen, "A data de nascimento não é válida!", "Aviso", JOptionPane.WARNING_MESSAGE);  
         } else {
             newUser = new User(regNameField.getText(), regMailField.getText(), new String(regPasswordField.getPassword()), regGenderBox.getSelectedIndex(), ddBox.getSelectedItem() +"-"+ mmBox.getSelectedItem() +"-" + yyyyBox.getSelectedItem());
-            newUser.serialize(newUser);
+            newUser.serialize();
             LoginServer.getInstance().addUser(newUser);
             LoginServer.getInstance().login(newUser);
         }
@@ -1030,14 +1106,14 @@ public class WatchEye extends JFrame {
             loginPanel.setVisible(true);
             loginPanel.setEnabled(true);
             newFriendField.setText(Constants.DEFAULT_NEW_FRIEND_TEXT);
+            LoginServer.getInstance().logoff();
         }
     }//GEN-LAST:event_btLogoffActionPerformed
 
     private void btBuddiesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btBuddiesActionPerformed
         friendPanel.setVisible(true);
         friendPanel.setEnabled(true);
-        listFriendRequest(LoginServer.getInstance().getCurrentUser());
-        listFriend(LoginServer.getInstance().getCurrentUser());
+        updateAndListFriendPanel(LoginServer.getInstance().getCurrentUser());
     }//GEN-LAST:event_btBuddiesActionPerformed
 
     private void newFriendFieldMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_newFriendFieldMouseClicked
@@ -1045,7 +1121,22 @@ public class WatchEye extends JFrame {
     }//GEN-LAST:event_newFriendFieldMouseClicked
 
     private void btSendActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btSendActionPerformed
-        LoginServer.getInstance().addNewFriendRequest(newFriendField.getText(), LoginServer.getInstance().getCurrentUser());
+        if(newFriendField.getText().equals(LoginServer.getInstance().getCurrentUser().getMail())){
+            Toolkit.getDefaultToolkit().beep();
+            JOptionPane.showMessageDialog(this, "Você já é amigo de si mesmo! (Ou não)", "Erro", JOptionPane.ERROR_MESSAGE);
+        } else if(!LoginServer.getInstance().emailInUse(newFriendField.getText())){
+            Toolkit.getDefaultToolkit().beep();
+            JOptionPane.showMessageDialog(this, "O usuário não existe!", "Erro", JOptionPane.ERROR_MESSAGE);
+        } else if(LoginServer.getInstance().blockedByReceiver(newFriendField.getText())){
+            Toolkit.getDefaultToolkit().beep();
+            JOptionPane.showMessageDialog(this, "O usuário lhe bloqueoou!", "Erro", JOptionPane.ERROR_MESSAGE);
+        } else if(LoginServer.getInstance().getCurrentUser().isFriend(newFriendField.getText())){
+            Toolkit.getDefaultToolkit().beep();
+            JOptionPane.showMessageDialog(this, "O usuário já é seu amigo(a)!", "Erro", JOptionPane.ERROR_MESSAGE);
+        } else { 
+            LoginServer.getInstance().addNewFriendRequest(newFriendField.getText(), LoginServer.getInstance().getCurrentUser());
+            JOptionPane.showMessageDialog(this, "Pedido Enviado!", "Pedido de Amizade", JOptionPane.INFORMATION_MESSAGE);
+        }
     }//GEN-LAST:event_btSendActionPerformed
 
     private void btAccept1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btAccept1ActionPerformed
@@ -1093,12 +1184,86 @@ public class WatchEye extends JFrame {
         friendPanel.setEnabled(false);
     }//GEN-LAST:event_btReturnActionPerformed
 
+    private void btFriendOption1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btFriendOption1ActionPerformed
+        showFriendOption(0);
+    }//GEN-LAST:event_btFriendOption1ActionPerformed
+
+    private void btFriendOption2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btFriendOption2ActionPerformed
+        showFriendOption(1);
+    }//GEN-LAST:event_btFriendOption2ActionPerformed
+
+    private void btFriendOption3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btFriendOption3ActionPerformed
+        showFriendOption(2);
+    }//GEN-LAST:event_btFriendOption3ActionPerformed
+
+    private void btFriendOption4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btFriendOption4ActionPerformed
+        showFriendOption(3);
+    }//GEN-LAST:event_btFriendOption4ActionPerformed
+
+    private void btFriendOption5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btFriendOption5ActionPerformed
+        showFriendOption(4);
+    }//GEN-LAST:event_btFriendOption5ActionPerformed
+
+    private void btFriendOption6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btFriendOption6ActionPerformed
+        showFriendOption(5);
+    }//GEN-LAST:event_btFriendOption6ActionPerformed
+
+    private void btFriendOption7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btFriendOption7ActionPerformed
+        showFriendOption(6);
+    }//GEN-LAST:event_btFriendOption7ActionPerformed
+
+    private void btFriendOption8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btFriendOption8ActionPerformed
+        showFriendOption(7);
+    }//GEN-LAST:event_btFriendOption8ActionPerformed
+
+    private void btFriendOption9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btFriendOption9ActionPerformed
+        showFriendOption(8);
+    }//GEN-LAST:event_btFriendOption9ActionPerformed
+
+    private void btFriendOption10ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btFriendOption10ActionPerformed
+        showFriendOption(9);
+    }//GEN-LAST:event_btFriendOption10ActionPerformed
+
+    private void btUnblock1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btUnblock1ActionPerformed
+        LoginServer.getInstance().unblock(0);
+    }//GEN-LAST:event_btUnblock1ActionPerformed
+
+    private void btUnblock2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btUnblock2ActionPerformed
+        LoginServer.getInstance().unblock(1);
+    }//GEN-LAST:event_btUnblock2ActionPerformed
+
+    private void btUnblock3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btUnblock3ActionPerformed
+        LoginServer.getInstance().unblock(2);
+    }//GEN-LAST:event_btUnblock3ActionPerformed
+
+    private void btUnblock4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btUnblock4ActionPerformed
+        LoginServer.getInstance().unblock(3);
+    }//GEN-LAST:event_btUnblock4ActionPerformed
+
+    private void btUnblock5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btUnblock5ActionPerformed
+        LoginServer.getInstance().unblock(4);
+    }//GEN-LAST:event_btUnblock5ActionPerformed
+
+    public void showFriendOption(int id){
+        Toolkit.getDefaultToolkit().beep();
+        String[] options = {"Bloquear", "Remover", "Cancelar"};
+        int selection = JOptionPane.showOptionDialog(this, "O que deseja Fazer?", "Opções de Amizade", JOptionPane.DEFAULT_OPTION, JOptionPane.QUESTION_MESSAGE, null, options, options[0]);
+        switch(selection){
+            case 0:
+                LoginServer.getInstance().removeFriend(id, true);
+                break;
+            case 1:
+                LoginServer.getInstance().removeFriend(id, false);
+                break;               
+        }
+    }
+    
     public void welcome(User user){
         btProfile.setText(user.getName());
         if(user.getFriendRequestList().size() > 0){
-            btBuddies.setText("Amigos (" + user.getFriendRequestList().size() + ")");
+            btBuddies.setText(Constants.BT_BUDDIES_TEXT + " (" + user.getFriendRequestList().size() + ")");
         } else {
-            btBuddies.setText("Amigos");
+            btBuddies.setText(Constants.BT_BUDDIES_TEXT);
         }
         homeScreen.setVisible(true);
         homeScreen.setEnabled(true);
@@ -1391,9 +1556,100 @@ public class WatchEye extends JFrame {
         }
     }
     
+    private void listBlocked(User toList){
+        if(toList.getBlockedList().size() < 5){
+            updateBlockedList(toList.getBlockedList().size());
+        }
+        int i = 0;
+        Iterator<User> it = toList.getBlockedList().iterator();
+        while(it.hasNext() && i < 5){
+            User blocked = it.next();
+            switch(i){
+                case 0:
+                    blLabel1.setVisible(true);
+                    blLabel1.setIcon(new ImageIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/default_profile.png")).getImage().getScaledInstance(40, 40, Image.SCALE_SMOOTH)));
+                    blNameLabel1.setVisible(true);
+                    blNameLabel1.setText(blocked.getName());
+                    btUnblock1.setVisible(true);
+                    btUnblock1.setEnabled(true);
+                    break;
+                case 1:
+                    blLabel2.setVisible(true);
+                    blLabel2.setIcon(new ImageIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/default_profile.png")).getImage().getScaledInstance(40, 40, Image.SCALE_SMOOTH)));
+                    blNameLabel2.setVisible(true);
+                    blNameLabel2.setText(blocked.getName());
+                    btUnblock2.setVisible(true);
+                    btUnblock2.setEnabled(true);
+                    break;
+                case 2:
+                    blLabel3.setVisible(true);
+                    blLabel3.setIcon(new ImageIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/default_profile.png")).getImage().getScaledInstance(40, 40, Image.SCALE_SMOOTH)));
+                    blNameLabel3.setVisible(true);
+                    blNameLabel3.setText(blocked.getName());
+                    btUnblock3.setVisible(true);
+                    btUnblock3.setEnabled(true);
+                    break;
+                case 3:
+                    blLabel4.setVisible(true);
+                    blLabel4.setIcon(new ImageIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/default_profile.png")).getImage().getScaledInstance(40, 40, Image.SCALE_SMOOTH)));
+                    blNameLabel4.setVisible(true);
+                    blNameLabel4.setText(blocked.getName());
+                    btUnblock4.setVisible(true);
+                    btUnblock4.setEnabled(true);
+                    break;
+                case 4:
+                    blLabel5.setVisible(true);
+                    blLabel5.setIcon(new ImageIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/default_profile.png")).getImage().getScaledInstance(40, 40, Image.SCALE_SMOOTH)));
+                    blNameLabel5.setVisible(true);
+                    blNameLabel5.setText(blocked.getName());
+                    btUnblock5.setVisible(true);
+                    btUnblock5.setEnabled(true);
+                    break;
+            }
+            i++;
+        }
+    }
+    
+    private void updateBlockedList(int size){
+        switch(size){
+            case 0:
+                blLabel1.setVisible(false);
+                blNameLabel1.setVisible(false);
+                btUnblock1.setVisible(false);
+                btUnblock1.setEnabled(false);
+            case 1:
+                blLabel2.setVisible(false);
+                blNameLabel2.setVisible(false);
+                btUnblock2.setVisible(false);
+                btUnblock2.setEnabled(false);
+            case 2:
+                blLabel3.setVisible(false);
+                blNameLabel3.setVisible(false);
+                btUnblock3.setVisible(false);
+                btUnblock3.setEnabled(false);
+            case 3:
+                blLabel3.setVisible(false);
+                blNameLabel3.setVisible(false);
+                btUnblock3.setVisible(false);
+                btUnblock3.setEnabled(false);
+            case 4:
+                blLabel3.setVisible(false);
+                blNameLabel3.setVisible(false);
+                btUnblock3.setVisible(false);
+                btUnblock3.setEnabled(false);
+                break;
+        }
+    }
+    
     public void updateAndListFriendPanel(User toList){
         listFriend(toList);
         listFriendRequest(toList);
+        listBlocked(toList);
+        if(toList.getFriendRequestList().size() > 0){
+            btBuddies.setText(Constants.BT_BUDDIES_TEXT + " ("+ toList.getFriendRequestList().size() + ")");
+        } else {
+            btBuddies.setText(Constants.BT_BUDDIES_TEXT);
+        }
     }
     
     /**

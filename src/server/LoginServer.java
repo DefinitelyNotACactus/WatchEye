@@ -25,7 +25,9 @@ import util.Serializator;
  * @author David
  */
 public class LoginServer implements Serializable {
-    
+
+    private static final long serialVersionUID = 131831L;
+
     private static LoginServer instance = new LoginServer();
     
     //Login Field
@@ -33,7 +35,6 @@ public class LoginServer implements Serializable {
     
     //Request Field
     private HashMap<String, ArrayList<User>> request = new HashMap<>();
-    private transient ArrayList<User> request_list = new ArrayList<>();
     
     //Transient Fields
     private transient User currentUser = null;
@@ -49,7 +50,7 @@ public class LoginServer implements Serializable {
     
     public void shutdown(){
         if(currentUser != null){
-            Serializator.serializeUser(currentUser);
+            currentUser.serialize();
         }
         serialize();
     }
@@ -80,12 +81,7 @@ public class LoginServer implements Serializable {
     public void enter(String mail, String password){
         if(user.containsKey(mail.toLowerCase())){
             if(user.get(mail.toLowerCase()).equals(password)){
-                try {
-                    try (FileInputStream fileIn = new FileInputStream("data/users/" + mail + ".ser"); ObjectInputStream in = new ObjectInputStream(fileIn)) {
-                        login((User) in.readObject());
-                    }
-                } catch (IOException | ClassNotFoundException i) {
-                }
+                login(Serializator.deserializeUser(mail));
             } else {
                Toolkit.getDefaultToolkit().beep();
                JOptionPane.showMessageDialog(client.getLoginScreen(), "Senha incorreta.", "Erro", JOptionPane.ERROR_MESSAGE);   
@@ -98,9 +94,9 @@ public class LoginServer implements Serializable {
     
     public void login(User user){
         currentUser = user;
-        client.welcome(currentUser);
-        if(request.containsKey(user.getMail())){
-            Iterator<User> it = request_list.iterator();
+        String mail = user.getMail();
+        if(request.containsKey(mail)){
+            Iterator<User> it = request.get(mail).iterator();
             while(it.hasNext()){
                 User requester = it.next();
                 user.addFriendRequest(requester);
@@ -108,12 +104,12 @@ public class LoginServer implements Serializable {
             }
             request.remove(user.getMail());
         }
+        client.welcome(currentUser);
     }
     
     public void logoff(){
-        currentUser.serialize(currentUser);
+        currentUser.serialize();
         currentUser = null;
-        request_list.clear();
     }
     
     public User getCurrentUser(){
@@ -129,18 +125,52 @@ public class LoginServer implements Serializable {
     }
     
     public void addNewFriendRequest(String email, User user){
-        request_list.add(user);
-        request.put(email, request_list);
+        request.putIfAbsent(email, new ArrayList<>());
+        boolean newEntry = true;
+        Iterator<User> it = request.get(email).iterator();
+        while(it.hasNext()){
+            if(it.next().getMail().equals(user.getMail())){
+                newEntry = false;
+                break;
+            }
+        }
+        if(newEntry){
+            request.get(email).add(user);
+        }
     }
     
     public void friendRequestResponse(int id, boolean accept){
         User sender = Serializator.deserializeUser(currentUser.getFriendRequestList().get(id).getMail());
         if(accept){
             currentUser.addFriend(sender);
-        }      
-        sender.addFriend(currentUser);
-        Serializator.serializeUser(sender);
+            sender.addFriend(currentUser);
+        }          
+        sender.serialize();
         currentUser.getFriendRequestList().remove(id);
+        currentUser.serialize();
         client.updateAndListFriendPanel(currentUser);
     }
+    
+    public void removeFriend(int id, boolean block){
+        User removed = Serializator.deserializeUser(currentUser.getFriendList().get(id).getMail());
+        if(block){
+            currentUser.blockUser(removed);
+        }
+        removed.removeFriend(currentUser);
+        removed.serialize();
+        currentUser.getFriendList().remove(id);
+        currentUser.serialize();
+        client.updateAndListFriendPanel(currentUser);
+    }
+    
+    public boolean blockedByReceiver(String email){
+        User toCheck = Serializator.deserializeUser(email);
+        return toCheck.isBlocked(currentUser.getMail());
+    }
+    
+    public void unblock(int id){
+        currentUser.getBlockedList().remove(id);
+        currentUser.serialize();
+        client.updateAndListFriendPanel(currentUser);
+    }   
 }
